@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'onlinelibrary.apps.OnlinelibraryConfig',
     'register.apps.RegisterConfig',
+    'django_filters',
     'rest_framework',
 ]
 

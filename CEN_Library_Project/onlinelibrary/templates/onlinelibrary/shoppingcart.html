@@ -1,7 +1,52 @@
 {%  extends 'onlinelibrary/base.html' %}
 
-{% block title %}ShoppingCart{% endblock %}
+{% block title %}
+    Shopping Cart
+{% endblock %}
 
 {% block content %}
-    <h1>This is the Shopping Cart Screen</h1>
+    <p>You are logged in!</p>
+    <h2>{{ cart }}</h2>
+    <h3>{{ note }}</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            <ul>
+                {% for item in cart.shoppingcartitem_set.all %}
+                        {% if item.savedforlater == False and item.ordered == False and item.quantity > 0 %}
+                            <li>
+                                {{ item }}
+                                <br>
+                                Price: ${{ item.book.getprice }}
+                                Quantity: <input type="number" min="0" value={{ item.quantity }} name="updatequantityitemid{{ item.id }}">
+                                Save For Later: <input type="checkbox" value="clickedsaveforlater" name="clickedsaveforlater{{ item.id }}">
+                                Delete: <input type="checkbox" value="checkeddelete" name="checkeddelete{{ item.id }}">
+                            </li>
+                        {%  endif %}
+                {% endfor %}
+                <br>
+                Subtotal: ${{ total }}
+            </ul>
+            <h3>Saved for Later</h3>
+            <ul>
+                {% for item in cart.shoppingcartitem_set.all %}
+                    {% if item.savedforlater == True and item.ordered == False and item.quantity > 0 %}
+                        <li>
+                            {{ item }}
+                            <br>
+                            Price: ${{ item.book.getprice }}
+                            Quantity: <input type="number" min="0" value={{ item.quantity }} name="updatequantityitemsavedforlaterid{{ item.id }}">
+                            Move To Cart: <input type="checkbox" value="checkedmovetocart" name="checkedmovetocart{{ item.id }}">
+                            Delete: <input type="checkbox" value="checkeddelete" name="checkeddeletesavedforlater{{ item.id }}">
+                        </li>
+                    {%  endif %}
+                {% endfor %}
+            </ul>
+            <button type="submit", name="update", value="update">Update</button>
+            <button type="submit", name="checkout", value="checkout">Check Out</button>
+        </form>
+
+{%  endblock %}
+
+{% block notloggin %}
+    <p>Login <a href="/login">Here</a></p>
 {% endblock %}

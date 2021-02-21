@@ -16,10 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from register import views as v
+from django.conf import settings
+from django.conf.urls.static import static
+
+import onlinelibrary.views
+import onlinelibrary.api_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
     path('', include("django.contrib.auth.urls")),
+    path('api/v1/shoppingcartitems/', onlinelibrary.api_views.ShoppingCartItemList.as_view()),
+    path('api/v1/shoppingcartitems/new', onlinelibrary.api_views.ShoppingCartItemCreate.as_view()),
+    path('api/v1/shoppingcartitems/<int:id>/',
+         onlinelibrary.api_views.ShoppingCartItemRetriveUpdateDestroy.as_view())
 ]
