@@ -13,3 +13,5 @@ def register(response):
         form = RegisterForm(response.POST)
 
     return render(response, "register/register.html", {"form": form})
+
+

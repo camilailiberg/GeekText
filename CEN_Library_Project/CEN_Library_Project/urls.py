@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
+    path('', include("django.contrib.auth.urls")),
 ]

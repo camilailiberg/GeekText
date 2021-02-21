@@ -3,5 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>This is the home screen</h1>
+    <p>{{ message }}</p>
+    <p>You are logged in!</p>
+    <p>Welcome To the Home Page {{ user.username }}</p>
+{% endblock %}
+
+{% block notloggin %}
+    <p>Login <a href="/login">Here</a></p>
+    <p>Don't have and account? Create one <a href="/register">here</a></p>
 {% endblock %}
