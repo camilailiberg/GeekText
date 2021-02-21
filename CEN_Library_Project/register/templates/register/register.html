@@ -1,0 +1,15 @@
+{% extends "onlinelibrary/base.html" %}
+
+{% block title %}Create An Account{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% endblock %}
+
+{% block notloggin %}
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+{% endblock %}
