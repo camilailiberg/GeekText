@@ -5,17 +5,17 @@ from django.db.models.signals import post_save
 
 
 class Book(models.Model):
-    name = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def getprice(self):
         return self.price
 
     def __repr__(self):
-        return '<Product object ({}) "{}" ${}>'.format(self.id, self.name, self.price)
+        return '<Product object ({}) "{}" ${}>'.format(self.id, self.title, self.price)
 
 
 class ShoppingCart(models.Model):
@@ -53,13 +53,13 @@ class ShoppingCartItem(models.Model):
     savedforlater = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.book.name
+        return self.book.title
 
     def total(self):
         return round(self.quantity * self.book.getprice(), 2)
 
     def getbookname(self):
-        return self.book.name
+        return self.book.title
 
     def getusername(self):
         return self.shoppingcart.user.username
@@ -68,7 +68,8 @@ class ShoppingCartItem(models.Model):
         return self.shoppingcart.user.id
 
     def __repr__(self):
-        return '<ShoppingCartItem object ({}) {}x "{}" "{}" {} {} {} {}>'.format(self.id, self.quantity, self.book.name,
+        return '<ShoppingCartItem object ({}) {}x "{}" "{}" {} {} {} {}>'.format(self.id, self.quantity,
+                                                                                 self.book.title,
                                                                                  self.shoppingcart.user.username,
                                                                                  self.ordered,
                                                                                  self.addedon, self.savedforlater,
