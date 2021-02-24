@@ -120,8 +120,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#FRONTEND_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'frontend', 'dist', 'frontend'))  # ADDED FOR ANGULAR
-
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"

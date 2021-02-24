@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include#, re_path  # re_path ADDED FOR ANGULAR
+from django.urls import path, include  # , re_path  # re_path ADDED FOR ANGULAR
 from register import views as v
 from django.conf import settings
 
@@ -28,13 +28,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
-    path('', include("django.contrib.auth.urls")),
+    path('', include("django.contrib.auth.urls")),  # this goes to django.contrib.auth.urls application, it will look
+    # in the url file there and will see if we have a valid url, so it will se if we have something like "login"
+    # "logout "change-password" "create-password" etc. So what we need to do is create a registration folder called
+    # registration and put login.html in there because that is where django is going to look and what template we will
+    # use to render our login form.
 
     path('api/v1/shoppingcartitems/', onlinelibrary.api_views.ShoppingCartItemList.as_view()),
     path('api/v1/shoppingcartitems/new', onlinelibrary.api_views.ShoppingCartItemCreate.as_view()),
     path('api/v1/shoppingcartitems/<int:id>/',
          onlinelibrary.api_views.ShoppingCartItemRetriveUpdateDestroy.as_view()),
 
-    # re_path(r'^(?P<path>.*)$', serve, {'document_root': settings.FRONTEND_ROOT}),  # points all urls in the settings directory that we define in the settings file.
-    # # re_path(. . . ) ADDED FOR ANGULAR
 ]
