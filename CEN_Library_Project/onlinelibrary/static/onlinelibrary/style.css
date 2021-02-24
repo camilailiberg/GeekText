@@ -25,7 +25,7 @@
 /*}*/
 
 .mt-2 {
-    color: #111;
+    color: #111 ;
 }
 
 .topnav {
@@ -60,9 +60,10 @@
 
 .col-8{
     text-align: center;
-    padding: 0px 10px;
+    padding: 0px 10px ;
 }
 
-.homepage{
+
+.main-content{
     margin-left: 0px;
 }
