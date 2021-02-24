@@ -1,11 +1,17 @@
 {%  extends 'onlinelibrary/base.html' %}
 
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'onlinelibrary/shoppingcart.css' %}">
+
 {% block title %}
     Shopping Cart
 {% endblock %}
 
 {% block content %}
-    <p>You are logged in!</p>
+    <div class="testing">
+        <p>You are logged in!</p>
+    </div>
     <h2>{{ cart }}</h2>
     <h3>{{ note }}</h3>
         <form action="" method="post">
