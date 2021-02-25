@@ -15,12 +15,13 @@ def home(response):
 def shoppingcartview(response):
     userid = response.user.id
     cart = ShoppingCart.objects.get(id=userid)
-    form = CartForm()
+    # form = CartForm()
 
     if cart == response.user.shoppingcart:
-        total = cart.total()
+        total = cart.subtotal()
 
-        return render(response, "onlinelibrary/shoppingcart.html", {"cart": cart, "total": total, "form": form})
+        # return render(response, "onlinelibrary/shoppingcart.html", {"cart": cart, "total": total, "form": form})
+        return render(response, "onlinelibrary/shoppingcart.html", {"cart": cart, "total": total})
 
     message = "You tried to access an unautharized shopping cart"
     return render(response, "onlinelibrary/home.html", {"message": message})
@@ -86,10 +87,7 @@ class CartView(TemplateView):
         cart = ShoppingCart.objects.get(id=userid)
 
         if cart == response.user.shoppingcart:
-            total = 0
-            for item in cart.shoppingcartitem_set.all():
-                if not item.savedforlater and not item.ordered:
-                    total = total + item.total()
+            total = cart.subtotal()
 
         args = {'form': form, 'total': total, 'cart': cart}
         return render(response, self.template_name, args)
@@ -101,10 +99,7 @@ class CartView(TemplateView):
         cart = ShoppingCart.objects.get(id=userid)
 
         if cart == response.user.shoppingcart:
-            total = 0
-            for item in cart.shoppingcartitem_set.all():
-                if not item.savedforlater and not item.ordered:
-                    total = total + item.total()
+            total = cart.subtotal()
 
             if form.is_valid():
                 shoppingcartitem = form.save(commit=False)

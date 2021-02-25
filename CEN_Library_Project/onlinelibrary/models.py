@@ -26,8 +26,9 @@ class ShoppingCart(models.Model):
 
     def subtotal(self):
         amount = 0.0
-        for cartitem in self.shoppingcartitem_set:
-            amount = amount + (cartitem.quantity * cartitem.book.getprice())
+        for cartitem in self.shoppingcartitem_set.all():
+            if not cartitem.savedforlater and not cartitem.ordered:
+                amount = amount + float(cartitem.quantity * cartitem.book.getprice())
         return round(amount, 2)
 
     def createshoppingcart(sender, instance, created, **kwargs):
