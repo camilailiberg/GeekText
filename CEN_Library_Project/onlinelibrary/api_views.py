@@ -4,8 +4,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import LimitOffsetPagination
 
-from onlinelibrary.serializers import ShoppingCartItemSerializer
-from onlinelibrary.models import ShoppingCartItem
+from .serializers import ShoppingCartItemSerializer
+from .models import ShoppingCartItem
 
 
 class ShoppingCartItemPagination(LimitOffsetPagination):

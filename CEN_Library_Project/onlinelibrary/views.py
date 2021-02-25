@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import ShoppingCart, Book, ShoppingCartItem
 from django.http import HttpResponse, request
 
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DeleteView
 from .forms import CartForm
 
 
@@ -15,14 +15,12 @@ def home(response):
 def shoppingcartview(response):
     userid = response.user.id
     cart = ShoppingCart.objects.get(id=userid)
+    form = CartForm()
 
     if cart == response.user.shoppingcart:
-        total = 0
-        for item in cart.shoppingcartitem_set.all():
-            if not item.savedforlater and not item.ordered:
-                total = total + item.total()
+        total = cart.total()
 
-        return render(response, "onlinelibrary/shoppingcart.html", {"cart": cart, "total": total})
+        return render(response, "onlinelibrary/shoppingcart.html", {"cart": cart, "total": total, "form": form})
 
     message = "You tried to access an unautharized shopping cart"
     return render(response, "onlinelibrary/home.html", {"message": message})
@@ -50,6 +48,7 @@ def save_for_later(response, cartitemid):
 
     return redirect('/ShoppingCart/')
 
+
 def move_to_cart(response, cartitemid):
     userid = response.user.id
     cart = ShoppingCart.objects.get(id=userid)
@@ -60,6 +59,21 @@ def move_to_cart(response, cartitemid):
     cart.save()
 
     return redirect('/ShoppingCart/')
+
+
+# def update_quantity(response, cartitemid):
+#     userid = response.user.id
+#     cart = ShoppingCart.objects.get(id=userid)
+#     cartitem = ShoppingCartItem.objects.get(id=cartitemid)
+#     form = response.form
+#
+#     if response.method == "POST":
+#         cartitem.quantity += form.cleaned_data['quantity']
+#         cartitem.save()
+#
+#     cart.save()
+#
+#     return redirect('/ShoppingCart/')
 
 
 class CartView(TemplateView):

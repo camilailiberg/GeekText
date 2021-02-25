@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from onlinelibrary.models import ShoppingCartItem, ShoppingCart
+from .models import ShoppingCartItem, ShoppingCart
 
 
 class ShoppingCartSerializer(serializers.ModelSerializer):

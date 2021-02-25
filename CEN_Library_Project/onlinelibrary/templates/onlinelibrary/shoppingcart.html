@@ -57,7 +57,7 @@
         </thead>
         <tfoot>
             <tr>
-                <td><strong>Total: ${{total}}</strong></td>
+                <td><strong>Subotal: ${{total}}</strong></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -82,6 +82,15 @@
             <th></th>
             <th></th>
         </thead>
+        <tfoot>
+            <tr>
+                <td><strong>Enjoy Shopping!</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
         {% for item in cart.shoppingcartitem_set.all %}
             {% if item.savedforlater == True and item.ordered == False and item.quantity > 0 %}
                 <tr><td>{{ item }}</td><td>{{item.quantity}}</td><td>${{ item.book.getprice }}</td><td><a href='{{item.id}}'>Remove</a></td><td><a href='mtc/{{item.id}}'>Move to Cart</a></td></tr>
