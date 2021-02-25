@@ -19,4 +19,5 @@ class ShoppingCartItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingCartItem
         fields = ('ShoppingCartItemid', 'savedforlater', 'addedon', 'ordered', 'purchasedby', 'Bookname',
-                  'book', 'NumnberOfThisBookInShoppingCart', 'totalforthisbookandquantity', 'shoppingcart', 'Usersname', 'Userid')
+                  'book', 'NumnberOfThisBookInShoppingCart', 'totalforthisbookandquantity', 'shoppingcart', 'Usersname',
+                  'Userid')
