@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'onlinelibrary.apps.OnlinelibraryConfig',
     'register.apps.RegisterConfig',
+    'cart.apps.CartConfig',
     'django_filters',
     'rest_framework',
 ]
@@ -107,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -123,4 +124,4 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login'

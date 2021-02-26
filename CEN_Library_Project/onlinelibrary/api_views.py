@@ -5,7 +5,7 @@ from rest_framework.filters import SearchFilter
 from rest_framework.pagination import LimitOffsetPagination
 
 from .serializers import ShoppingCartItemSerializer
-from .models import ShoppingCartItem
+from cart.models import ShoppingCartItem
 
 
 class ShoppingCartItemPagination(LimitOffsetPagination):

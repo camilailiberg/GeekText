@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # , re_path  # re_path ADDED FOR ANGULAR
 from register import views as v
+from cart import views as vcart
+# from .views import CartView
 from django.conf import settings
 
 from django.conf.urls.static import static, serve  # serve added FOR ANGULAR
@@ -27,6 +29,13 @@ import onlinelibrary.api_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("register/", v.register, name="register"),
+
+    path("ShoppingCart/<int:cartitemid>", vcart.delete_cart_item, name="deletecartitem"),
+    path("ShoppingCart/sfl/<int:cartitemid>", vcart.save_for_later, name="saveforlater"),
+    path("ShoppingCart/mtc/<int:cartitemid>", vcart.move_to_cart, name="movetocart"),
+    # path('ShoppingCart/', CartView.as_view(), name='cart'),
+    path('ShoppingCart/', vcart.shoppingcartview, name='cart'),
+
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
     path('', include("django.contrib.auth.urls")),  # this goes to django.contrib.auth.urls application, it will look
     # in the url file there and will see if we have a valid url, so it will se if we have something like "login"
