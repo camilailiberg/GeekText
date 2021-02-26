@@ -60,15 +60,22 @@ def move_to_cart(response, cartitemid):
 #     userid = response.user.id
 #     cart = ShoppingCart.objects.get(id=userid)
 #     cartitem = ShoppingCartItem.objects.get(id=cartitemid)
-#     form = response.form
+# #     form = response.form  # TODO: old
+# #
+#     if response.method == "POST":  # TODO: old
+#         # cartitem.quantity += form.cleaned_data['quantity']  # TODO: old
+#         if response.POST.get("quantity"):  # FIXME: trying and failed
+#             newquantity = response.POST.get("quantity")  # FIXME: trying and failed
+#             if newquantity > 0:  # FIXME: trying and failed
+#                 cartitem.quantity = newquantity  # FIXME: trying and failed
+#                 cartitem.save()  # TODO: old
+#             else:  # FIXME: trying and failed
+#                 print("invalid quantity")  # FIXME: trying and failed
+#         # cartitem.save()  # TODO: old
 #
-#     if response.method == "POST":
-#         cartitem.quantity += form.cleaned_data['quantity']
-#         cartitem.save()
+#     cart.save()  # FIXME: trying and failed
 #
-#     cart.save()
-#
-#     return redirect('/ShoppingCart/')
+#     return redirect('/ShoppingCart/')  # TODO: old
 
 
 class CartView(TemplateView):

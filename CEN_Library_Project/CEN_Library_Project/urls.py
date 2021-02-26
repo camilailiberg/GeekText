@@ -33,6 +33,8 @@ urlpatterns = [
     path("ShoppingCart/<int:cartitemid>", vcart.delete_cart_item, name="deletecartitem"),
     path("ShoppingCart/sfl/<int:cartitemid>", vcart.save_for_later, name="saveforlater"),
     path("ShoppingCart/mtc/<int:cartitemid>", vcart.move_to_cart, name="movetocart"),
+    # path("ShoppingCart/updateqnty/<int:cartitemid>", vcart.update_quantity, name="updateqty"),  # FIXME: Didn't work
+    #  FIXME: CONTINUATION trying to update quantity
     # path('ShoppingCart/', CartView.as_view(), name='cart'),
     path('ShoppingCart/', vcart.shoppingcartview, name='cart'),
 
