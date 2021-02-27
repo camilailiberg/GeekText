@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from wishlist import views as vwishlist
 
 urlpatterns = [
-    path('', include("onlinelibrary.urls")),
-    path('wishlist/', include("onlinelibrary.urls")),
+    path('wishlist/', include("wishlist.urls")),
     path('admin/', admin.site.urls),
+    path("wishlist/<int:id>", vwishlist.index, name="index"),
+    path("wishlist", vwishlist.wishlist, name="wishlist"),
+
 ]

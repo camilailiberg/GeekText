@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'onlinelibrary.apps.OnlinelibraryConfig',
+    'wishlist.apps.WishlistConfig',
     'rest_framework',
 ]
 

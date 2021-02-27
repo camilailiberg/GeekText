@@ -7,7 +7,7 @@ from .models import WishList, Book
 
 def index(response, id):
     ls = WishList.objects.get(id=id)
-    return render(response, "onlinelibrary/List.html", {"ls": ls})
+    return render(response, "wishlist/List.html", {"ls": ls})
 
 def wishlist(response):
     wl = WishList.objects.all()
@@ -21,5 +21,5 @@ def wishlist(response):
             else:
                 print("invalid")
 
-    return render(response, "onlinelibrary/WishListHome.html", {"wl": wl})
+    return render(response, "wishlist/WishListHome.html", {"wl": wl})
 
