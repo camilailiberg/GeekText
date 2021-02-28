@@ -3,22 +3,9 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from bookdetails.models import Book
 
 # Create your models here.
-
-
-class Book(models.Model):
-    title = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
-
-    def __str__(self):
-        return self.title
-
-    def getprice(self):
-        return self.price
-
-    def __repr__(self):
-        return '<Product object ({}) "{}" ${}>'.format(self.id, self.title, self.price)
 
 
 class ShoppingCart(models.Model):
