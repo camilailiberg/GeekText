@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+
 from django.urls import path, include  # , re_path  # re_path ADDED FOR ANGULAR
 from register import views as v
 from django.conf import settings
@@ -53,4 +54,6 @@ urlpatterns = [
          onlinelibrary.api_views.ShoppingCartItemRetriveUpdateDestroy.as_view()),  # This is for the  RESTful api views
     # for the shoppingcartapi
 
+
+    path('bookdetails/', include('bookdetails.urls'))
 ]
