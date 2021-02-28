@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'onlinelibrary.apps.OnlinelibraryConfig',
     'register.apps.RegisterConfig',
     'cart.apps.CartConfig',
+    'wishlist.apps.WishlistConfig',
     'django_filters',
     'rest_framework',
 ]

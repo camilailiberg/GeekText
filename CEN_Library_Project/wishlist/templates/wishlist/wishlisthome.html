@@ -1,0 +1,32 @@
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title%}
+Wish List
+{% endblock%}
+
+{% block content%}
+<h1>Wish Lists Home Page</h1>
+
+<form  method="post" action="#">
+
+
+    <button type="submit" , name="new" , value="new">Create New</button>
+    <input type="text", name="new">
+    {% csrf_token %}
+    <ul>
+        {% for wl in wl %}
+        <table>
+            <h1><a href="http://127.0.0.1:8000/wishlist/{{wl.id}}"> {{wl.name}}</a></h1>
+            {% if wl.primary == True %}
+            <li><input type="checkbox", value="true", name="{{wl.id}}" checked>Primary</li>
+            {% else %}
+            <li><input type="checkbox", value="true", name="{{wl.id}}">Primary</li>
+            {% endif %}
+            <button type="submit" , name="delete" , value="delete">Delete</button>
+
+        </table>
+        {% endfor %}
+
+    </ul>
+</form>
+{% endblock%}

@@ -1,0 +1,15 @@
+
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title %}View Wish List {% endblock %}
+
+{% block content %}
+    <h1>{{ls.name}}</h1>
+    <ul>
+    {% for book in ls.books.all %}
+<!--        {% if book.added == True %}-->
+        <li>{{book}}</li>
+<!--        {% endif %}-->
+    {% endfor %}
+    </ul>
+{% endblock %}

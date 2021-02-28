@@ -20,6 +20,8 @@ from cart import views as vcart
 # from .views import CartView
 from django.conf import settings
 
+from wishlist import views as vwishlist
+
 from django.conf.urls.static import static, serve  # serve added FOR ANGULAR
 from rest_framework.routers import DefaultRouter
 
@@ -28,15 +30,21 @@ import onlinelibrary.api_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("register/", v.register, name="register"),
+    path("register/", v.register, name="register"),  # this connects to the views in register app
 
-    path("ShoppingCart/<int:cartitemid>", vcart.delete_cart_item, name="deletecartitem"),
-    path("ShoppingCart/sfl/<int:cartitemid>", vcart.save_for_later, name="saveforlater"),
-    path("ShoppingCart/mtc/<int:cartitemid>", vcart.move_to_cart, name="movetocart"),
+    path("ShoppingCart/<int:cartitemid>", vcart.delete_cart_item, name="deletecartitem"),  # this connects to the
+    # views in cart app
+    path("ShoppingCart/sfl/<int:cartitemid>", vcart.save_for_later, name="saveforlater"),  # this connects to the
+    # views in cart app
+    path("ShoppingCart/mtc/<int:cartitemid>", vcart.move_to_cart, name="movetocart"),  # this connects to the
+    # views in cart app
     # path("ShoppingCart/updateqnty/<int:cartitemid>", vcart.update_quantity, name="updateqty"),  # FIXME: Didn't work
     #  FIXME: CONTINUATION trying to update quantity
     # path('ShoppingCart/', CartView.as_view(), name='cart'),
     path('ShoppingCart/', vcart.shoppingcartview, name='cart'),
+
+    path("wishlist/<int:id>", vwishlist.index, name="index"),
+    path("wishlist/", vwishlist.wishlist, name="wishlist"),
 
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
     path('', include("django.contrib.auth.urls")),  # this goes to django.contrib.auth.urls application, it will look
@@ -45,9 +53,12 @@ urlpatterns = [
     # registration and put login.html in there because that is where django is going to look and what template we will
     # use to render our login form.
 
-    path('api/v1/shoppingcartitems/', onlinelibrary.api_views.ShoppingCartItemList.as_view()),
-    path('api/v1/shoppingcartitems/new', onlinelibrary.api_views.ShoppingCartItemCreate.as_view()),
-    path('api/v1/shoppingcartitems/<int:id>/',
-         onlinelibrary.api_views.ShoppingCartItemRetriveUpdateDestroy.as_view()),
+    path('api/v1/shoppingcartitems/', onlinelibrary.api_views.ShoppingCartItemList.as_view()),  # This is for the
+    # RESTful api views for the shoppingcartapi
+    path('api/v1/shoppingcartitems/new', onlinelibrary.api_views.ShoppingCartItemCreate.as_view()),  # This is for the
+    # RESTful api views for the shoppingcartapi
+    path('api/v1/shoppingcartitems/<int:id>/',  # This is for the  RESTful api views for the shoppingcartapi
+         onlinelibrary.api_views.ShoppingCartItemRetriveUpdateDestroy.as_view()),  # This is for the  RESTful api views
+    # for the shoppingcartapi
 
 ]
