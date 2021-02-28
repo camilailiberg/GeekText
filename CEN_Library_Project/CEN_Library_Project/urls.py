@@ -25,6 +25,7 @@ from rest_framework.routers import DefaultRouter
 import onlinelibrary.api_views
 
 urlpatterns = [
+    path('', include('onlinelibrary.urls')),
     path('admin/', admin.site.urls),
 
     #  REGISTER APP VIEWS:
@@ -55,5 +56,7 @@ urlpatterns = [
     # for the shoppingcartapi
 
 
-    path('bookdetails/', include('bookdetails.urls'))
+    path('bookdetails/', include('bookdetails.urls')),
+
+    path('browse/', include('browse.urls')),
 ]

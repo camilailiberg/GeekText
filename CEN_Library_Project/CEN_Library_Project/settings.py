@@ -9,9 +9,13 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+<<<<<<< HEAD
 
 import os  # ADDED FOR ANGULAR
 
+=======
+import os
+>>>>>>> origin/Browse_Sort
 from pathlib import Path
 import os
 
@@ -45,6 +49,7 @@ INSTALLED_APPS = [
     'wishlist.apps.WishlistConfig',
     'django_filters',
     'bookdetails.apps.BookdetailsConfig',
+    'browse.apps.BrowseConfig',
     'rest_framework',
 ]
 
@@ -131,3 +136,5 @@ LOGOUT_REDIRECT_URL = '/login'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
