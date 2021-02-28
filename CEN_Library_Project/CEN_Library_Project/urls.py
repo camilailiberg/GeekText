@@ -27,18 +27,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #  REGISTER APP VIEWS:
-    path("register/", v.register, name="register"),  # this connects to the views in register app
+    path("register/", v.register, name="register"),  # this connects to the views inside register app
     path('', include("django.contrib.auth.urls")),  # this goes to django.contrib.auth.urls application, it will look
     # in the url file there and will see if we have a valid url, so it will se if we have something like "login"
     # "logout "change-password" "create-password" etc. So what we need to do is create a registration folder called
     # registration and put login.html in there because that is where django is going to look and what template we will
     # use to render our login form.
 
-    #  CART APP VIEWS:
-    path('ShoppingCart/', include("cart.urls")),
+    #  CART APP URLS:
+    path('ShoppingCart/', include("cart.urls")),  # this connects to the urls.py inside the app cart
 
     #  WISHLIST APP URLS:
-    path('wishlist/', include("wishlist.urls")),
+    path('wishlist/', include("wishlist.urls")),  # this connects to the urls.py inside the app wishlist
 
     # ONLINELIBRARY APP URLS
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
