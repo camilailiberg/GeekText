@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'onlinelibrary.apps.OnlinelibraryConfig',
+    'bookdetails.apps.BookdetailsConfig',
     'rest_framework',
 ]
 
