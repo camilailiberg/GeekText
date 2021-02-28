@@ -16,43 +16,35 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # , re_path  # re_path ADDED FOR ANGULAR
 from register import views as v
-from cart import views as vcart
-# from .views import CartView
 from django.conf import settings
-
-from wishlist import views as vwishlist
 
 from django.conf.urls.static import static, serve  # serve added FOR ANGULAR
 from rest_framework.routers import DefaultRouter
 
-import onlinelibrary.views
 import onlinelibrary.api_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    #  REGISTER APP VIEWS:
     path("register/", v.register, name="register"),  # this connects to the views in register app
-
-    path("ShoppingCart/<int:cartitemid>", vcart.delete_cart_item, name="deletecartitem"),  # this connects to the
-    # views in cart app
-    path("ShoppingCart/sfl/<int:cartitemid>", vcart.save_for_later, name="saveforlater"),  # this connects to the
-    # views in cart app
-    path("ShoppingCart/mtc/<int:cartitemid>", vcart.move_to_cart, name="movetocart"),  # this connects to the
-    # views in cart app
-    # path("ShoppingCart/updateqnty/<int:cartitemid>", vcart.update_quantity, name="updateqty"),  # FIXME: Didn't work
-    #  FIXME: CONTINUATION trying to update quantity
-    # path('ShoppingCart/', CartView.as_view(), name='cart'),
-    path('ShoppingCart/', vcart.shoppingcartview, name='cart'),
-
-    path("wishlist/<int:id>", vwishlist.index, name="index"),
-    path("wishlist/", vwishlist.wishlist, name="wishlist"),
-
-    path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
     path('', include("django.contrib.auth.urls")),  # this goes to django.contrib.auth.urls application, it will look
     # in the url file there and will see if we have a valid url, so it will se if we have something like "login"
     # "logout "change-password" "create-password" etc. So what we need to do is create a registration folder called
     # registration and put login.html in there because that is where django is going to look and what template we will
     # use to render our login form.
 
+    #  CART APP VIEWS:
+    path('ShoppingCart/', include("cart.urls")),
+
+    #  WISHLIST APP URLS:
+    path('wishlist/', include("wishlist.urls")),
+
+    # ONLINELIBRARY APP URLS
+    path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
+
+
+    #  RESTful API VIEWS FOR SHOPPINGCARTITEMS
     path('api/v1/shoppingcartitems/', onlinelibrary.api_views.ShoppingCartItemList.as_view()),  # This is for the
     # RESTful api views for the shoppingcartapi
     path('api/v1/shoppingcartitems/new', onlinelibrary.api_views.ShoppingCartItemCreate.as_view()),  # This is for the
