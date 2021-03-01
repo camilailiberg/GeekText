@@ -1,0 +1,14 @@
+h1
+{
+    color: #ffffff;
+    font-family: "Lucida Sans Typewriter";
+    text-align: center;
+}
+
+.pageHeader
+{
+    background-color: #00e6e6;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
