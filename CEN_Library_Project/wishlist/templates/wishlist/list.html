@@ -1,7 +1,7 @@
 
 {% extends 'onlinelibrary/base.html' %}
 
-{% block title %} View Wish List {% endblock %}
+{% block title %} {{ls.name}} {% endblock %}
 
 {% block content %}
     <h1>{{ls.name}}</h1>
@@ -27,11 +27,10 @@
                 <td>{{book.genre}}</a></td>
                 <td>{{book.rating}}</a></td>
                 <td>{{book.price}}</a></td>
-                <td><a href='{{bk.id}}'>Move</a></td>
-                <td><a href='{{bk.id}}'>Remove</a></td>
+                <td><a href="#">Move</a></td>
+                <td><a href="{% url 'remove_book' book.id %}">Remove</a></td>
             </tr>
         {% endfor %}
        </table>
     </ul>
-
 {% endblock %}

@@ -17,5 +17,12 @@ class WishList(models.Model):
     def __str__(self):
         return self.name
 
+    def getuserid(self):
+        return self.user.id
+
+    def getbookid(self):
+        return self.book.id
+
+
 
 

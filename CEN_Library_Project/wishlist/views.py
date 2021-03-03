@@ -7,15 +7,15 @@ from bookdetails.models import Book
 
 # Create your views here.
 
-def index(response, id):
-    ls = WishList.objects.get(id=id)
-    bk = Book.objects.all()
-    return render(response, "wishlist/list.html", {"bk": bk, "ls": ls})
+def index(response,id):
+    wl = WishList.objects.get(id=id)
+    bk = Book.objects.all
+    return render(response, "wishlist/list.html", {"bk": bk, "wl": wl})
 
 
 def wishlist(response):
     userid = response.user.id
-    wl = WishList.objects.all()
+    wl = WishList.objects.all
 
     if response.method == "POST":
         print(response.POST)
@@ -29,25 +29,25 @@ def wishlist(response):
     return render(response, "wishlist/wishlisthome.html", {"wl": wl})
 
 
-def delete_wishlist(response):
-    userid = response.user.id
-    wishlist = WishList.objects.all()
-    wishlist.delete()
+def delete_wishlist(request,id):
+    userid = request.user.id
+    wl = WishList.objects.get(id=id)
+    if request.method == "POST":
+        wl.delete()
+        return redirect('/wishlist/')
 
-    wishlist.save()
-
-    return redirect('/WishList/')
+    return render(request, "wishlist/delete.html", {'wl': wl})
 
 
-def delete_book(response, bookid):
-    userid = response.user.id
-    wishlist = WishList.objects.all()
-    book = Book.objects.get(id=bookid)
-    book.delete()
+def remove_book(request,id):
+    userid = request.user.id
+    wl = WishList.objects.all
+    bk = Book.objects.get(id=id)
+    if request.method == "POST":
+        bk.delete()
+        return redirect('/wishlist/')
 
-    wishlist.save()
-
-    return redirect('/WishList/')
+    return render(request, 'wishlist/remove.html', {"bk": bk, "wl": wl})
 
 
 def move_book(response, bookid):
@@ -58,4 +58,4 @@ def move_book(response, bookid):
 
     wishlist.save()
 
-    return redirect('/wishlist/')
+    return redirect('/')

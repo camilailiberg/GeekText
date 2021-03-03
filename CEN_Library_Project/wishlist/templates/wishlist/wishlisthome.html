@@ -7,13 +7,16 @@ Wish List
 {% block content%}
 <h1>Wish Lists:</h1>
 
-
 <form  method="post" action="#">
+{% csrf_token %}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button type="submit", name="new", class="btn btn-success", value="new">New WishList</button>
+        </div>
+        <input type="text", name="new">
+    </div>
+    <br>
 
-    <button type="submit", nmame="new", class="btn btn-success", value="new">New WishList</button>
-    <input type="text", name="new">
-    <br></br>
-    {% csrf_token %}
 
 <table class="table">
     <thead>
@@ -23,7 +26,9 @@ Wish List
             <th></th>
     </thead>
         {% for wl in wl %}
-        <tr><td><a href="http://127.0.0.1:8000/wishlist/{{wl.id}}">{{wl.name}}</a></td><td><input type="radio", value="{{wl.primary}}", name="primary"></li></div></td><td><a href='{{wl.id}}'>Remove</a></td></tr>
+        <tr><td><a href="http://127.0.0.1:8000/wishlist/{{wl.id}}">{{wl.name}}</a></td>
+            <td><input type="radio", value="{{wl.primary}}", name="primary"></li></div></td>
+            <td><a href="{% url 'delete_wishlist' wl.id %}">Delete</a></td></tr>
         {% endfor %}
 </table>
 
