@@ -71,7 +71,11 @@
                         {{ item }}
                     </td>
                     <td>
-                        {{item.quantity}}
+                        <form action="{% url 'updateqty' item.id%}" method="POST">
+                            {% csrf_token %}
+                            <input type="number", name="UpdateValue", min="1", width="1", value="{{item.quantity}}">
+                            <button type="submit", name="Update", class="btn btn-primary">Update</button>
+                        </form>
                     </td>
                     <td>
                         ${{ item.book.getprice }}
@@ -122,7 +126,11 @@
                         {{ item }}
                     </td>
                     <td>
-                        {{item.quantity}}
+                        <form action="{% url 'updateqty' item.id%}" method="POST">
+                            {% csrf_token %}
+                            <input type="number", name="UpdateValue", min="1", width="1", value="{{item.quantity}}">
+                            <button type="submit", name="Update", class="btn btn-primary">Update</button>
+                        </form>
                     </td>
                     <td>
                         ${{ item.book.getprice }}

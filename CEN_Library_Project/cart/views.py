@@ -52,6 +52,21 @@ def move_to_cart(response, cartitemid):
 
     return redirect('/ShoppingCart/')
 
+def update_quantity(request, cartitemid):
+    userid = request.user.id
+    cart = ShoppingCart.objects.get(id=userid)
+    cartitem = ShoppingCartItem.objects.get(id=cartitemid)
+
+    if request.method == "POST":
+        newquantity = request.POST['UpdateValue']
+        if int(newquantity) <= 0:
+            raise Exception("new quantity must be greater than 0")
+        cartitem.quantity = newquantity
+        cartitem.save()
+        cart.save()
+
+    return redirect('/ShoppingCart/')
+
 
 # def update_quantity(response, cartitemid):
 #     userid = response.user.id

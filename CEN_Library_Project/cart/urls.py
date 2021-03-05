@@ -8,8 +8,7 @@ urlpatterns = [
     # views in cart app
     path("mtc/<int:cartitemid>", views.move_to_cart, name="movetocart"),  # this connects to the
     # views in cart app
-    # path("ShoppingCart/updateqnty/<int:cartitemid>", vcart.update_quantity, name="updateqty"),  # FIXME: Didn't work
-    #  FIXME: CONTINUATION trying to update quantity
+    path("updateqnty/<int:cartitemid>", views.update_quantity, name="updateqty"),
     path('', views.shoppingcartview, name='cart'),  # this connects to the
     # views in cart app
 ]
