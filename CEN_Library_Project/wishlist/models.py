@@ -1,10 +1,8 @@
 from django.db import models
-
-# Create your models here.
-
-from django.db import models
+from django import forms
 from django.contrib.auth.models import User
-from cart.models import Book
+from django.db.models.signals import post_save
+from bookdetails.models import Book
 
 
 # Create your models here.
@@ -18,11 +16,11 @@ class WishList(models.Model):
     def __str__(self):
         return self.name
 
+    def getuserid(self):
+        return self.user.id
 
-# class Book(models.Model):
-#     wishlist = models.ForeignKey(WishList, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=300)
-#     added = models.BooleanField()
-#
-#     def __str__(self):
-#         return self
+    def getbookid(self):
+        return self.book
+
+
+#class WishListItems(models.Model):

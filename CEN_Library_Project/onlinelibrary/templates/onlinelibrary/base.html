@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-        {% load static %}
+    {% load static %}
 
-        <link rel="stylesheet" type="text/css" href="{% static 'onlinelibrary/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'onlinelibrary/style.css' %}">
 
-        <title>{% block title %}Online Library{% endblock %}</title>
-    </head>
+    <title>{% block title %}Online Library{% endblock %}</title>
+</head>
 
-    <body>
+<body>
 <!--        <div class="sidenav">-->
 <!--            <a href="/">Home</a>-->
 <!--            <a href="/account">Account</a>-->
@@ -34,54 +35,58 @@
 <!--              <a class="nav-link" href="/logout">Logout</a>-->
 <!--            </nav>-->
 <!--        </div>-->
-        <div class="topnav">
-            {% if user.is_authenticated %}
-              <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/">Account</a>
-              <a class="nav-link" href="/wishlist">Wishlist</a>
-              <a class="nav-link" href="/ShoppingCart"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-</svg></a>
-              <a class="nav-link" href="/login">Login</a>
-              <a class="nav-link" href="/logout">Logout</a>
-            {% else %}
-              <a class="nav-link" href="/login">Home</a>
-              <a class="nav-link" href="/login">Account</a>
-              <a class="nav-link" href="/login">Wishlist</a>
-              <a class="nav-link" href="/login">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                  </svg>
-              </a>
-              <a class="nav-link" href="/login">Login</a>
-              <a class="nav-link" href="/login">Logout</a>
-            {% endif %}
+<div class="topnav">
+    {% if user.is_authenticated %}
+    <a class="nav-link" href="/">Home</a>
+    <a class="nav-link" href="/wishlist">Wishlist</a>
+    <a class="nav-link" href="/ShoppingCart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-bag"
+             viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+        </svg>
+    </a>
+    <a class="nav-link" href="/login">Hello, {{user.username}}</a>
+    <a class="nav-link" href="/logout">Logout</a>
+    {% else %}
+    <a class="nav-link" href="/login">Home</a>
+    <a class="nav-link" href="/login">Wishlist</a>
+    <a class="nav-link" href="/login">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag"
+             viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+        </svg>
+    </a>
+    <a class="nav-link" href="/login">Hello, Sign in</a>
+    {% endif %}
+</div>
+<div id="content" , name="content" , class="main">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h1 class="mt-2">GeekText</h1>
         </div>
-        <div id="content", name="content", class="main">
-            <div class="row justify-content-center">
-                <div class="col-8">
-                    <h1 class="mt-2">GeekText</h1>
-                </div>
-            </div>
-            <hr class="mt-0 mb-4">
-                {% if user.is_authenticated %}
-                    <div class="main-content">
-                        <div class="alert alert-success" role="alert">
-                            <p>You are logged in!</p>
-                        </div>
-                        {% block content %}
-                        {% endblock %}
-                    </div>
-                {% else %}
-                    {% block notloggin %}
-                    {% endblock %}
-                {% endif %}
-        </div>
+    </div>
+    <hr class="mt-0 mb-4">
+    {% if user.is_authenticated %}
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% else %}
+    {% block notloggin %}
+    {% endblock %}
+    {% endif %}
+</div>
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-    </body>
+</body>
 </html>

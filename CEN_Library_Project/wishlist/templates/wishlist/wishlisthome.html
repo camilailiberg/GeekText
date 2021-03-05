@@ -5,28 +5,33 @@ Wish List
 {% endblock%}
 
 {% block content%}
-<h1>Wish Lists Home Page</h1>
+<h1>Wish Lists:</h1>
 
 <form  method="post" action="#">
+{% csrf_token %}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button type="submit", name="new", class="btn btn-success", value="new">New WishList</button>
+        </div>
+        <input type="text", name="new">
+    </div>
+    <br>
 
 
-    <button type="submit" , name="new" , value="new">Create New</button>
-    <input type="text", name="new">
-    {% csrf_token %}
-    <ul>
+<table class="table">
+    <thead>
+            <th>Name</th>
+            <th>Primary</th>
+            <th></th>
+            <th></th>
+    </thead>
         {% for wl in wl %}
-        <table>
-            <h1><a href="http://127.0.0.1:8000/wishlist/{{wl.id}}"> {{wl.name}}</a></h1>
-            {% if wl.primary == True %}
-            <li><input type="checkbox", value="true", name="{{wl.id}}" checked>Primary</li>
-            {% else %}
-            <li><input type="checkbox", value="true", name="{{wl.id}}">Primary</li>
-            {% endif %}
-            <button type="submit" , name="delete" , value="delete">Delete</button>
-
-        </table>
+        <tr><td><a href="http://127.0.0.1:8000/wishlist/{{wl.id}}">{{wl.name}}</a></td>
+            <td><input type="radio", value="{{wl.primary}}", name="primary"></input</td>
+            <td><a href="{% url 'delete_wishlist' wl.id %}">Delete</a></td></tr>
         {% endfor %}
+</table>
 
-    </ul>
 </form>
+
 {% endblock%}

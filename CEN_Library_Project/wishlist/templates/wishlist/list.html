@@ -1,15 +1,37 @@
 
 {% extends 'onlinelibrary/base.html' %}
 
-{% block title %}View Wish List {% endblock %}
+{% block title %} {{ls.name}} {% endblock %}
 
 {% block content %}
-    <h1>{{ls.name}}</h1>
+    <h1>{{wl.name}}</h1>
     <ul>
-    {% for book in ls.books.all %}
-<!--        {% if book.added == True %}-->
-        <li>{{book}}</li>
-<!--        {% endif %}-->
-    {% endfor %}
+       <table class="table">
+            <thead>
+                <tr>
+                    <th>Cover</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Rating</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+        {% for book in bk %}
+            <tr>
+                <td><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.P_Vq09ur8pzOYi_oOB6idgHaLZ%26pid%3DApi&f=1" alt="" width="100" height="100"></td>
+                <td>{{book.title}}</a></td>
+                <td>{{book.author}}</a></td>
+                <td>{{book.genre}}</a></td>
+                <td>{{book.rating}}</a></td>
+                <td>{{book.price}}</a></td>
+                <td><a href="#">Move to Cart</a></td>
+                <td><a href="#">Transfer</a></td>
+                <td><a href="{% url 'remove_book' book.id %}">Remove</a></td>
+            </tr>
+        {% endfor %}
+       </table>
     </ul>
 {% endblock %}

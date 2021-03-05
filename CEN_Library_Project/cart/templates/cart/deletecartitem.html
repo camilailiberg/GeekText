@@ -1,0 +1,15 @@
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title %}Delete Cart Item{% endblock %}
+
+{% block content %}
+<p>Are you sure you want to delete "{{cartitem}}"?</p>
+<button onclick="window.location.href='http://127.0.0.1:8000/ShoppingCart/';" type="button" class="btn btn-danger">Cancel</button>
+<br>
+<br>
+<form action="{% url 'deletecartitem' cartitem.id %}" method="POST">
+    {% csrf_token %}
+<!--    <a href="{% url 'cart' %}">Cancel</a>-->
+    <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
+</form>
+{% endblock %}

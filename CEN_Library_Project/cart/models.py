@@ -6,8 +6,6 @@ from django.db.models.signals import post_save
 from bookdetails.models import Book
 
 # Create your models here.
-
-
 class ShoppingCart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="shoppingcart", null=True)
 
