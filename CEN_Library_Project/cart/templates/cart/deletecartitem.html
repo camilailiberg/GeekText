@@ -9,7 +9,6 @@
 <br>
 <form action="{% url 'deletecartitem' cartitem.id %}" method="POST">
     {% csrf_token %}
-<!--    <a href="{% url 'cart' %}">Cancel</a>-->
     <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
 </form>
 {% endblock %}

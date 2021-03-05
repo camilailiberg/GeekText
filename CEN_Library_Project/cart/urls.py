@@ -9,6 +9,8 @@ urlpatterns = [
     path("mtc/<int:cartitemid>", views.move_to_cart, name="movetocart"),  # this connects to the
     # views in cart app
     path("updateqnty/<int:cartitemid>", views.update_quantity, name="updateqty"),
+    path("checkout", views.checkout, name="checkout"),# this connects to the
+    # views in cart app
     path('', views.shoppingcartview, name='cart'),  # this connects to the
     # views in cart app
 ]

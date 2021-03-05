@@ -5,45 +5,6 @@
 {% endblock %}
 
 {% block content %}
-<!--    <h2>{{ cart }}</h2>-->
-<!--    <h3>{{ note }}</h3>-->
-<!--        <form action="#" method="post">-->
-<!--            {% csrf_token %}-->
-<!--            <ul>-->
-<!--                {% for item in cart.shoppingcartitem_set.all %}-->
-<!--                        {% if item.savedforlater == False and item.ordered == False and item.quantity > 0 %}-->
-<!--                            <li>-->
-<!--                                {{ item }}-->
-<!--                                <br>-->
-<!--                                Price: ${{ item.book.getprice }}-->
-<!--                                Quantity: <input type="number" min="0" value={{ item.quantity }} name="updatequantityitemid{{ item.id }}">-->
-<!--                                Save For Later: <input type="checkbox" value="clickedsaveforlater" name="clickedsaveforlater{{ item.id }}">-->
-<!--                                Delete: <input type="checkbox" value="checkeddelete" name="checkeddelete{{ item.id }}">-->
-<!--                            </li>-->
-<!--                        {%  endif %}-->
-<!--                {% endfor %}-->
-<!--                <br>-->
-<!--                Subtotal: ${{ total }}-->
-<!--            </ul>-->
-<!--            <h3>Saved for Later</h3>-->
-<!--            <ul>-->
-<!--                {% for item in cart.shoppingcartitem_set.all %}-->
-<!--                    {% if item.savedforlater == True and item.ordered == False and item.quantity > 0 %}-->
-<!--                        <li>-->
-<!--                            {{ item }}-->
-<!--                            <br>-->
-<!--                            Price: ${{ item.book.getprice }}-->
-<!--                            Quantity: <input type="number" min="0" value={{ item.quantity }} name="updatequantityitemsavedforlaterid{{ item.id }}">-->
-<!--                            Move To Cart: <input type="checkbox" value="checkedmovetocart" name="checkedmovetocart{{ item.id }}">-->
-<!--                            Delete: <input type="checkbox" value="checkeddelete" name="checkeddeletesavedforlater{{ item.id }}">-->
-<!--                        </li>-->
-<!--                    {%  endif %}-->
-<!--                {% endfor %}-->
-<!--            </ul>-->
-<!--            <button type="submit", name="update", value="update">Update</button>-->
-<!--            <button type="submit", name="checkout", value="checkout">Check Out</button>-->
-<!--        </form>-->
-
     <h2>{{cart}}</h2>
     <br>
     <br>
@@ -57,7 +18,9 @@
         </thead>
         <tfoot>
             <tr>
-                <td><strong>Subotal: ${{total}}</strong></td>
+                <td>
+                    <strong>Subotal: ${{total}}</strong>
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -98,6 +61,10 @@
             {%  endif %}
         {% endfor %}
     </table>
+    <form action="{% url 'checkout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="Checkout", class="btn btn-success">Checkout</button>
+    </form>
     <br>
     <br>
     <h2>Saved for Later</h2>
@@ -154,10 +121,6 @@
         {% endfor %}
     </table>
     <br>
-<!--    <form method="post">{% csrf_token %}-->
-<!--        {{ form.as_p}}-->
-<!--        <button type="submit">Update</button>-->
-<!--    </form>-->
     <br>
     <br>
     <br>

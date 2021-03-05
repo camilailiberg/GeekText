@@ -28,25 +28,28 @@ def delete_cart_item(request, cartitemid):
     return render(request, "cart/deletecartitem.html", {"cartitem":cartitem})
 
 
-def save_for_later(response, cartitemid):
-    userid = response.user.id
+def save_for_later(request, cartitemid):
+    userid = request.user.id
     cart = ShoppingCart.objects.get(id=userid)
     cartitem = ShoppingCartItem.objects.get(id=cartitemid)
-    cartitem.savedforlater = True
-    cartitem.save()
+
+    if request.method == "POST":
+        cartitem.savedforlater = True
+        cartitem.save()
 
     cart.save()
 
     return redirect('/ShoppingCart/')
 
 
-def move_to_cart(response, cartitemid):
-    userid = response.user.id
+def move_to_cart(request, cartitemid):
+    userid = request.user.id
     cart = ShoppingCart.objects.get(id=userid)
     cartitem = ShoppingCartItem.objects.get(id=cartitemid)
 
-    cartitem.savedforlater = False
-    cartitem.save()
+    if request.method == "POST":
+        cartitem.savedforlater = False
+        cartitem.save()
 
     cart.save()
 
@@ -67,26 +70,17 @@ def update_quantity(request, cartitemid):
 
     return redirect('/ShoppingCart/')
 
+def checkout(request):
+    userid = request.user.id
+    cart = ShoppingCart.objects.get(id=userid)
 
-# def update_quantity(response, cartitemid):
-#     userid = response.user.id
-#     cart = ShoppingCart.objects.get(id=userid)
-#     cartitem = ShoppingCartItem.objects.get(id=cartitemid)
-# #     form = response.form  # TODO: old
-# #
-#     if response.method == "POST":  # TODO: old
-#         # cartitem.quantity += form.cleaned_data['quantity']  # TODO: old
-#         if response.POST.get("quantity"):  # FIXME: trying and failed
-#             newquantity = response.POST.get("quantity")  # FIXME: trying and failed
-#             if newquantity > 0:  # FIXME: trying and failed
-#                 cartitem.quantity = newquantity  # FIXME: trying and failed
-#                 cartitem.save()  # TODO: old
-#             else:  # FIXME: trying and failed
-#                 print("invalid quantity")  # FIXME: trying and failed
-#         # cartitem.save()  # TODO: old
-#
-#     cart.save()  # FIXME: trying and failed
-#
-#     return redirect('/ShoppingCart/')  # TODO: old
+    if request.method == "POST":
+        for item in cart.shoppingcartitem_set.all():
+            if not item.savedforlater:
+                item.ordered = True
+                item.save()
+                cart.save()
+
+    return redirect('/ShoppingCart/')
 
 
