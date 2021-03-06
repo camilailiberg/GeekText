@@ -13,7 +13,6 @@ class Profile(models.Model):
     # creditCard = models.IntegerField() # TODO: MAx and min length
     wishlistCounter = models.IntegerField(default=0)
 
-
     def __str__(self):
         return self.user.username
 
@@ -28,6 +27,8 @@ class Profile(models.Model):
             userid = instance.id
             Profile.objects.create(user=instance, id=userid)
             ShoppingCart.objects.create(user=instance, id=userid)
+
             print('Profile and Shopping Cart Created!')
 
     post_save.connect(createprofile, sender=User)
+

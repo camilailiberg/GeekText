@@ -1,0 +1,54 @@
+{% extends "onlinelibrary/base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <form method="POST" action="{% url 'edit_username' %}">
+        {% csrf_token %}
+        <label for="username"> Username: </label>
+        <input id="username", type = "text", name="username",placeholder="write new username">
+        <button type="submit", class="btn btn-success">Update</button>
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="{% url 'edit_email' %}">
+        {% csrf_token %}
+        <label for="email"> Email: </label>
+        <input id="email", type = "text", name="email",placeholder="{{user.email}}">
+        <button type="submit", name = "emailbutton",  class="btn btn-success">Update</button>
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="{% url 'edit_first_name' %}">
+        {% csrf_token %}
+        <label for="firstname"> First Name: </label>
+        <input id="firstname", type = "text", name="firstname",placeholder="{{user.first_name}}">
+        <button type="submit", name = "firstnamebutton",  class="btn btn-success">Update</button>
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="{% url 'edit_last_name' %}">
+        {% csrf_token %}
+        <label for="lastname"> Last Name: </label>
+        <input id="lastname", type = "text", name="lastname",placeholder="{{user.last_name}}">
+        <button type="submit", name = "lastnamebutton",  class="btn btn-success">Update</button>
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="{% url 'edit_home_address' %}">
+        {% csrf_token %}
+        <label for="homeaddress"> Home address: </label>
+        <input id="homeaddress", type = "text", name="homeaddress",placeholder="{{profile.homeAddress}}">
+        <button type="submit", name = "homeaddressbutton",  class="btn btn-success">Update</button>
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="{% url 'edit_address' %}">
+        {% csrf_token %}
+        <label for="address"> Address: </label>
+        <input id="address", type = "text", name="address",placeholder="{{profile.address}}">
+        <button type="submit", name = "addressbutton",  class="btn btn-success">Update</button>
+    </form>
+{% endblock %}
