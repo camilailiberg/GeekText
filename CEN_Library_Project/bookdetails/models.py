@@ -5,7 +5,13 @@ class Book(models.Model):
     cover = models.ImageField(upload_to='bookImages', default='/Users/Christian/Desktop/No_image.jpg')
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
-    genre = models.CharField(max_length=200, default='other')
+    GENRE = (
+        ('Sci-Fi', 'Sci-Fi'),
+        ('Fantasy', 'Fantasy'),
+        ('Children', 'Children'),
+        ('Other', 'Other'),
+    )
+    genre = models.CharField(max_length=200, choices=GENRE, default='Other')
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=0)
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     description = models.CharField(max_length=4000, blank=True)

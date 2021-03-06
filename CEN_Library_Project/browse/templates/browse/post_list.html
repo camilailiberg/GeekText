@@ -1,3 +1,68 @@
-<html>
-<title>GeekText</title>
-</html>
+{% extends "onlinelibrary/base.html" %}
+
+{% load static %}
+
+{% block title %}GeekText Browse{% endblock %}
+
+{% block content %}
+        <head>
+            <link rel="stylesheet" href="{% static 'css/style_browse.css' %}">
+        </head>
+        {% block body %}
+            <form action="" method="GET">
+                <div class="form-row">
+                    <div class="col-offset">
+                        <input style="width: 300px;" type="text" name="title" placeholder="Search for book by title." value="">
+                    </div>
+                    <div class="col-offset">
+                        {{book_form.as_p}}
+                    </div>
+                    <div class="col">
+                        <div class="rate">
+                            <span class="filter_rating">Filter by Rating:  </span>
+                            <input type="radio" id="star5" name="rate" value="5" {% if star_select == "5" %} checked="checked" {%endif%} />
+                            <label for="star5" title="5 stars">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" {% if star_select == "4" %} checked="checked" {%endif%} />
+                            <label for="star4" title="4 stars or up">4 stars or up</label>
+                            <input type="radio" id="star3" name="rate" value="3" {% if star_select == "3" %} checked="checked" {%endif%} />
+                            <label for="star3" title="3 stars or up">3 stars or up</label>
+                            <input type="radio" id="star2" name="rate" value="2" {% if star_select == "2" %} checked="checked" {%endif%} />
+                            <label for="star2" title="2 stars or up">2 stars or up</label>
+                            <input type="radio" id="star1" name="rate" value="1" {% if star_select == "1" %} checked="checked" {%endif%} />
+                            <label for="star1" title="1 stars or up">1 star or up</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <input class="btn btn-dark" type="submit" value="Submit" />
+                </div>
+            </form>
+            <h1 style="text-align: center">Browse Books</h1>
+            <div class="bookTable">
+                <div class="bookRow">
+                    <div class="headerCell"><p>Cover</p></div>
+                    <div class="headerCell"><p>Book Title</p></div>
+                    <div class="headerCell"><p>Author</p></div>
+                    <div class="headerCell"><p>Genre</p></div>
+                    <div class="headerCell"><p>Price</p></div>
+                    <div class="headerCell"><p>Rating</p></div>
+                </div>
+                {% for book in books %}
+                <div class="bookRow">
+                    <div class="bookCell"><img src="{{book.cover.url}}" style="width:200px;height:200px;"></div>
+                    <div class="bookCell"> {{book.title}} </div>
+                    <div class="bookCell"> {{book.author}} </div>
+                    <div class="bookCell">{{book.genre}}</div>
+                    <div class="bookCell">${{book.price}}</div>
+                    <div class="bookCell">{{book.rating}}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        {% endblock body %}
+{% endblock content%}

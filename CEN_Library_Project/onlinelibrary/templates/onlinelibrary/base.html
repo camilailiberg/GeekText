@@ -69,13 +69,13 @@
                         <div class="alert alert-success" role="alert">
                             <p>You are logged in!</p>
                         </div>
-                        {% block content %}
-                        {% endblock %}
                     </div>
                 {% else %}
                     {% block notloggin %}
                     {% endblock %}
                 {% endif %}
+            {% block content %}
+            {% endblock %}
         </div>
 
 
