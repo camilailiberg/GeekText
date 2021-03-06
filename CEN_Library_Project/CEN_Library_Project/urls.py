@@ -48,6 +48,8 @@ urlpatterns = [
     # ONLINELIBRARY APP URLS
     path('', include("onlinelibrary.urls")),  # this connects to the urls.py inside the app onlinelibrary
 
+    #  RATINGREVIEW APP URLS:
+    path('ratingReview/', include("ratingReview.urls")),  # this connects to the urls.py inside the app ratingReview
 
     #  RESTful API VIEWS FOR SHOPPINGCARTITEMS
     path('api/v1/shoppingcartitems/', onlinelibrary.api_views.ShoppingCartItemList.as_view()),  # This is for the

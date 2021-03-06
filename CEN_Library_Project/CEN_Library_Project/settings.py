@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django_static_fontawesome",
     'crispy_forms',
     'onlinelibrary.apps.OnlinelibraryConfig',
     'register.apps.RegisterConfig',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'bookdetails.apps.BookdetailsConfig',
     'browse.apps.BrowseConfig',
     'rest_framework',
+    'ratingReview.apps.ratingReviewConfig',
 ]
 
 MIDDLEWARE = [
