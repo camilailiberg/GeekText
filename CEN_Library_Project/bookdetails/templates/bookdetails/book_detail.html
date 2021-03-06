@@ -9,10 +9,22 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/image.css' %}">
 
-<div class="container-fluid">
+<style>
+    .container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+</style>
+
+
+<section id="book">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+
     <div class="row align-items-center">
-        <div class="col">
-            <img style="text-align:center;" id="myImg" src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:100%;max-width:300px">
+        <div class="col" style="text-align: center;">
+            <img id="myImg" src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:100%;max-width:300px">
 
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -25,21 +37,81 @@
             <script type="text/javascript" src="{% static 'javascript/image.js' %}"></script>
         </div>
         <div class="col">
-            <h1 style="font-family:georgia">{{ book.title }}</h1>
-            <p><strong>Author</strong>:
+            <h2 style="font-family:serif">{{ book.title }}</h2>
+            <p>by
                 {% for name in author %}
                 <a href="" style="color: #68836a">{{ name }} </a> &nbsp
                 {% endfor %}
             </p>
-            <p><strong>Genre</strong>: {{ book.genre }} </p>
-            <p><strong>Rating</strong>: {{ book.rating }} </p>
-            <p>----------------------------------------</p>
-            <p><strong>Price</strong>: ${{ book.price }} </p>
-
-            <p><strong>Description</strong>: {{ book.description }}</p>
+            <hr>
+            <p>Rating: {{ book.rating }} </p>
+            <p>{{ book.genre }} </p>
+            <p>${{ book.price }} </p>
+            <p>Publisher: {{ book.publisher }} </p>
+            <p>Release Date: {{ book.release_date }} </p>
         </div>
     </div>
-</div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="descriptions" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Description</h2>
+          <p class="lead">{{ book.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="author bio" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About the Author</h2>
+          <p class="lead">{% for name in author %}
+           {{ name.bio }}
+                {% endfor %}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="reviews " class="bg-light" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Customer Reviews</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Contact us</h2>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Footer -->
+  <footer class="py-5 bg-dark">
+      <p class="m-0 text-center text-white">Copyright &copy; All Rights Reserved</p>
+    <!-- /.container -->
+  </footer>
+
+
+
+
 
 
 {% endblock content %}
