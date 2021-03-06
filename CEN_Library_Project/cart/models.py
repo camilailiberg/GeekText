@@ -21,14 +21,7 @@ class ShoppingCart(models.Model):
                 amount = amount + float(cartitem.quantity * cartitem.book.getprice())
         return round(amount, 2)
 
-    def createshoppingcart(sender, instance, created, **kwargs):
 
-        if created:
-            userid = instance.id
-            ShoppingCart.objects.create(user=instance, id=userid)
-            print('ShoppingCart Created!')
-
-    post_save.connect(createshoppingcart, sender=User)
 
     def __repr__(self):
         return '<ShoppingCart object ({}) "{}">'.format(self.id, self.user.username)

@@ -1,0 +1,25 @@
+{% extends "onlinelibrary/base.html" %}
+
+{% block title %}Account Summary{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <h2>Account Summary</h2>
+    <br>
+    <br>
+    <p>
+        Username: {{user.username}}
+        <br>
+        Email: {{user.email}}
+        <br>
+        First Name: {{user.first_name}}
+        <br>
+        Last Name: {{user.last_name}}
+        <br>
+        Home Address: {{profile.homeAddress}}
+        <br>
+        Address: {{profile.address}}
+    </p>
+<button onclick="window.location.href='http://127.0.0.1:8000/register/edit';" type="button" class="btn btn-danger">Edit</button>
+{% endblock %}
