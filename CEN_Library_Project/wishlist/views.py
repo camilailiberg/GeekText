@@ -28,7 +28,7 @@ def wishlist(response): #good to go
                 wl.create(name=txt, primary=False, user=response.user)
                 return redirect('/wishlist/')
             else:
-                print("invalid")
+                raise Exception("Invalid Name")
 
     return render(response, "wishlist/wishlisthome.html", {"wl": wl})
 

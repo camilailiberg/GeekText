@@ -21,8 +21,8 @@
             </thead>
         {% for book in bk %}
             <tr>
-                <td><img src="{{book.cover}}" alt="" width="100" height="100"></td>
-                <td>{{book.title}}</a></td>
+                <td><img src="{{book.cover.url}}" alt="" width="100" height="100"></td>
+                <td><a href="#">{{book.title}}</a></td></a></td>
                 <td>{{book.author}}</a></td>
                 <td>{{book.genre}}</a></td>
                 <td>{{book.rating}}</a></td>
