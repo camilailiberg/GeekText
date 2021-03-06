@@ -1,0 +1,45 @@
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title %}{{ book.title }}{% endblock title %}
+
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/image.css' %}">
+
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col">
+            <img style="text-align:center;" id="myImg" src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:100%;max-width:300px">
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+
+            <!-- Importing js file for Modal image -->
+            <script type="text/javascript" src="{% static 'javascript/image.js' %}"></script>
+        </div>
+        <div class="col">
+            <h1 style="font-family:georgia">{{ book.title }}</h1>
+            <p><strong>Author</strong>:
+                {% for name in author %}
+                <a href="" style="color: #68836a">{{ name }} </a> &nbsp
+                {% endfor %}
+            </p>
+            <p><strong>Genre</strong>: {{ book.genre }} </p>
+            <p><strong>Rating</strong>: {{ book.rating }} </p>
+            <p>----------------------------------------</p>
+            <p><strong>Price</strong>: ${{ book.price }} </p>
+
+            <p><strong>Description</strong>: {{ book.description }}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

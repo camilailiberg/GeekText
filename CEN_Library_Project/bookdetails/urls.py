@@ -7,5 +7,6 @@ from django.urls import path
 # Create your views here.
 
 urlpatterns = [
-    path('', views.index, name='bookdetails'),
+    path('<int:book_id>', views.index, name='index'),
+    path('', views.home, name='home'),
 ]
