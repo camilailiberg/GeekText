@@ -4,5 +4,6 @@ env/
 venv/
 
 #IDEA
-.idea
+.idea/
+/.idea/
 idea/
