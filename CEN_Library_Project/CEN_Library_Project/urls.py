@@ -62,10 +62,6 @@ urlpatterns = [
 
 
     path('bookdetails/', include('bookdetails.urls')),
-
     path('browse/', include('browse.urls')),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# =======
-# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# >>>>>>> origin/Browse_Sort

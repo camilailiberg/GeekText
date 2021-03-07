@@ -1,21 +1,35 @@
+<<<<<<< HEAD
 
 /*mine from here down */
+=======
+>>>>>>> origin/bookDetails
 .mt-2 {
     color: #111 ;
 }
 
 .topnav {
+    position:relative;
+    z-index:50;
     font-family: Silom ;
     width: 100% ;
+<<<<<<< HEAD
     height: 70px ;
+=======
+    height: 90px ;
+>>>>>>> origin/bookDetails
     position: fixed ;
-    z-index: 1 ;
     top: 0 ;
     background-color: #111 ;
     overflow-y: hidden ;
+<<<<<<< HEAD
     padding: 10px ;
     display: flex;
     justify-content: space-evenly;
+=======
+    padding: 20px ;
+    display: flex;
+    justify-content: center;
+>>>>>>> origin/bookDetails
 }
 
 .topnav a {
@@ -31,6 +45,11 @@
 }
 
 .main{
+<<<<<<< HEAD
+=======
+    position:relative;
+    z-index:30;
+>>>>>>> origin/bookDetails
     margin-top: 90px;
     padding: 0px 70px;
 }
@@ -43,4 +62,36 @@
 
 .main-content{
     margin-left: 0px;
+}
+
+/* Modify the background color */
+
+        .navbar-custom {
+            background-color:#68836a;
+        }
+        /* Modify brand and text color */
+
+        button {
+  all: unset;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+form {
+  background-color: white;
+  width: 300px;
+  height: 44px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input {
+  all: unset;
+  font: 16px system-ui;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
 }
