@@ -16,7 +16,7 @@ class ShoppingCart(models.Model):
         amount = 0.0
         for cartitem in self.shoppingcartitem_set.all():
             if not cartitem.savedforlater and not cartitem.ordered:
-                amount = amount + float(cartitem.quantity * cartitem.book.getprice())
+                amount = amount + float(cartitem.quantity * cartitem.book.price)
         return round(amount, 2)
 
     def __repr__(self):

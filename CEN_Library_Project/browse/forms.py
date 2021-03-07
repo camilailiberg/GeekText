@@ -5,7 +5,7 @@ from bookdetails.models import Book
 class BookForm(ModelForm):
 
     allTuple = (('Select All', 'Select All'),)
-    genre_choice_empty = allTuple + Book.GENRE
+    genre_choice_empty = allTuple + Book.GENRES
     genre = forms.ChoiceField(choices=genre_choice_empty, label='Filter by Genre')
 
     class Meta:

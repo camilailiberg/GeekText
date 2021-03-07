@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="" />
+    <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/browse/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/browse/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/cart/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart/shoppingcart.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart/shoppingcart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/static/onlinelibrary/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/static/onlinelibrary/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary/base.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +114,8 @@
       <workItem from="1614965880188" duration="2829000" />
       <workItem from="1614981008305" duration="5911000" />
       <workItem from="1615043907149" duration="15287000" />
-      <workItem from="1615071544850" duration="9436000" />
+      <workItem from="1615071544850" duration="9818000" />
+      <workItem from="1615081702564" duration="745000" />
     </task>
     <servers />
   </component>
