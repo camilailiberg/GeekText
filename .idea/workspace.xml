@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1odNVF7E0jxdSR6S8H9Lt9BKJZg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/FrontEnd/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary" />
+      <recent name="$PROJECT_DIR$/CEN_Library_Project/register/templates/register" />
+      <recent name="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CEN_Library_Project/cart" />
+      <recent name="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="" />
+      <created>1613612528989</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613612528989</updated>
+      <workItem from="1613612530442" duration="1362000" />
+      <workItem from="1613687593577" duration="1389000" />
+      <workItem from="1613781636499" duration="6241000" />
+      <workItem from="1613840295848" duration="3632000" />
+      <workItem from="1613927020118" duration="11121000" />
+      <workItem from="1613949439493" duration="750000" />
+      <workItem from="1613963827896" duration="1776000" />
+      <workItem from="1614013947542" duration="12000" />
+      <workItem from="1614043794069" duration="264000" />
+      <workItem from="1614044388724" duration="8515000" />
+      <workItem from="1614101225996" duration="66000" />
+      <workItem from="1614116729339" duration="2000" />
+      <workItem from="1614119265840" duration="251000" />
+      <workItem from="1614121421372" duration="1341000" />
+      <workItem from="1614122796142" duration="7000" />
+      <workItem from="1614122898661" duration="29000" />
+      <workItem from="1614133130962" duration="10652000" />
+      <workItem from="1614195030427" duration="23782000" />
+      <workItem from="1614228280466" duration="24000" />
+      <workItem from="1614264845795" duration="7899000" />
+      <workItem from="1614281194328" duration="2642000" />
+      <workItem from="1614288909884" duration="164000" />
+      <workItem from="1614290388462" duration="975000" />
+      <workItem from="1614306280696" duration="6388000" />
+      <workItem from="1614396810449" duration="868000" />
+      <workItem from="1614445457321" duration="3532000" />
+      <workItem from="1614538883002" duration="6983000" />
+      <workItem from="1614549931589" duration="7675000" />
+      <workItem from="1614740983878" duration="4331000" />
+      <workItem from="1614806018838" duration="75000" />
+      <workItem from="1614821561468" duration="1973000" />
+      <workItem from="1614823713129" duration="8994000" />
+      <workItem from="1614895703630" duration="3687000" />
+      <workItem from="1614913980423" duration="8218000" />
+      <workItem from="1614952080526" duration="243000" />
+      <workItem from="1614965880188" duration="2829000" />
+      <workItem from="1614981008305" duration="5911000" />
+      <workItem from="1615043907149" duration="15287000" />
+      <workItem from="1615071544850" duration="7830000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

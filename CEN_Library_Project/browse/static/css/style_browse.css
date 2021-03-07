@@ -1,0 +1,98 @@
+.bookTable
+{
+    display:table;
+    border-collapse:collapse;
+    table-layout:fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bookRow
+{
+    display:table-row;
+}
+
+.headerCell, .bookCell
+{
+    display:table-cell;
+    width: 200px;
+    text-align:center;
+    vertical-align: middle;
+    border: solid;
+    border-width: thin;
+
+}
+
+.headerCell
+{
+    background-color: #111111;
+    color: #ffffff;
+    line-height: 4em;
+}
+
+.bookCell
+{
+}
+
+.bookRow:nth-child(even)
+{
+    background-color: #cccccc;
+}
+
+.bookRow:nth-child(odd)
+{
+    background-color: #a6a6a6;
+}
+
+.rate {
+    display: inline-block;
+    height: 46px;
+    #padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:25px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.filter_rating
+{
+    font-size: 16px;
+    white-space: pre;
+    line-height: 2em;
+
+}
+
+.form-control
+{
+    display: inline-block;
+}
+#<style type="text/css">
+#</style>
