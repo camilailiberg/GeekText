@@ -1,0 +1,17 @@
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title%}
+Remove
+{% endblock%}
+
+{% block content%}
+
+<p>Are you sure you want to remove "{{bk.title}}" from your Wish List?</p>
+
+<form action="{% url 'remove_book' bk.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'wishlist' %}">Cancel</a>
+    <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
+</form>
+
+{% endblock %}

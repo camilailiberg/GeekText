@@ -11,7 +11,7 @@ class WishList(models.Model):
     name = models.CharField(max_length=200)
     primary = models.BooleanField(True, False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist", null=True)
-    book = models.ManyToManyField(Book)
+    book = models.ManyToManyField(Book, related_name="bookwish")
 
     def __str__(self):
         return self.name
@@ -21,6 +21,3 @@ class WishList(models.Model):
 
     def getbookid(self):
         return self.book
-
-
-#class WishListItems(models.Model):

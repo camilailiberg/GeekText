@@ -7,13 +7,16 @@ from bookdetails.models import Book
 
 # Create your views here.
 
-def index(response, id):
+wishlist_id = 0
+
+def index(response, id): #good to go
     wl = WishList.objects.get(id=id)
+    global wishlist_id
+    wishlist_id = id
     bk = wl.book.all()
     return render(response, "wishlist/list.html", {"bk": bk})
 
-
-def wishlist(response):
+def wishlist(response): #good to go
     wl = WishList.objects.filter(user=response.user)
 
     if response.method == "POST":
@@ -22,14 +25,13 @@ def wishlist(response):
             txt = response.POST.get("new")
             if len(txt) > 2:
                 wl.create(name=txt, primary=False, user=response.user)
+                return redirect('/wishlist/')
             else:
-                print("invalid")
+                raise Exception("Invalid Name")
 
     return render(response, "wishlist/wishlisthome.html", {"wl": wl})
 
-
-def delete_wishlist(request, id):
-    userid = request.user.id
+def delete_wishlist(request, id): #good to go
     wl = WishList.objects.get(id=id)
     if request.method == "POST":
         wl.delete()
@@ -37,26 +39,23 @@ def delete_wishlist(request, id):
 
     return render(request, "wishlist/delete.html", {'wl': wl})
 
-
-def remove_book(request, id):
-    userid = request.user.id
-    bk = Book.objects.get(id=id)
+def remove_book(request, id): #good to go
+    wl = WishList.objects.get(id=wishlist_id)
+    bk = wl.book.get(id=id)
     if request.method == "POST":
-        bk.delete()
+        wl.book.remove(bk)
         return redirect('/wishlist/')
 
     return render(request, 'wishlist/remove.html', {"bk": bk})
 
+def move_book(request, id):
+    wl = WishList.objects.get(id=wishlist_id)
+    bk = wl.book.get(id=id)
+    if request.method == "POST":
+        wl.book.id = wishlist_id
+        return redirect('/wishlist/')
 
-def move_book(response, bookid):
-    userid = response.user.id
-    wishlist = WishList.objects.get(id=userid)
-    book = Book.objects.get(id=bookid)
-    book.save()
-
-    wishlist.save()
-
-    return redirect('/')
+    return render(request, 'wishlist/transfer.html', {"bk": bk})
 
 def move_to_cart(response, bookid):
     userid = response.user.id
