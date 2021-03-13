@@ -18,7 +18,7 @@ class Profile(models.Model):
 
     def addWishlist(self):
 
-        self.wishlistCounter + 1
+        self.wishlistCounter = self.wishlistCounter + 1
 
 
     def createprofile(sender, instance, created, **kwargs):

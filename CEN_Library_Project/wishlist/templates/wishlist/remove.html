@@ -6,11 +6,13 @@ Remove
 
 {% block content%}
 
-<p>Are you sure you want to remove "{{bk.title}}" from your Wish List?</p>
+<p>Are you sure you want to delete "{{bk.title}}" from your Wish List?</p>
+<button onclick="window.location.href='http://127.0.0.1:8000/wishlist/';" type="button" class="btn btn-danger">Cancel</button>
+<br>
+<br>
 
 <form action="{% url 'remove_book' bk.id %}" method="POST">
     {% csrf_token %}
-    <a href="{% url 'wishlist' %}">Cancel</a>
     <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
 </form>
 

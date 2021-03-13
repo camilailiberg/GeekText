@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/browse/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/browse/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/cart/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart/shoppingcart.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart/shoppingcart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/static/onlinelibrary/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/static/onlinelibrary/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/remove.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/remove.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/wishlisthome.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/wishlist/templates/wishlist/wishlisthome.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/wishlist/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/wishlist/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/wishlist/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/wishlist/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CEN_Library_Project/run.py" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -67,6 +69,30 @@
       <recent name="$PROJECT_DIR$/CEN_Library_Project/cart" />
       <recent name="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="GeekText" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="E:\GeekText\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CEN_Library_Project" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CEN_Library_Project/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -116,6 +142,9 @@
       <workItem from="1615043907149" duration="15287000" />
       <workItem from="1615071544850" duration="9818000" />
       <workItem from="1615081702564" duration="745000" />
+      <workItem from="1615328414345" duration="28000" />
+      <workItem from="1615598261661" duration="3033000" />
+      <workItem from="1615601303647" duration="3801000" />
     </task>
     <servers />
   </component>
@@ -133,5 +162,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GeekText$run.coverage" NAME="run Coverage Results" MODIFIED="1615601307943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CEN_Library_Project" />
   </component>
 </project>
