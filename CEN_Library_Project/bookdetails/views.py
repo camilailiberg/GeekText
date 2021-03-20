@@ -21,6 +21,7 @@ def index(request, book_id):
     author = book.authors.all()
     ratings = book.ratings.all()
     average_rating = 0
+    percent_rating = 0
 
     if len(ratings) != 0:
 
@@ -29,6 +30,7 @@ def index(request, book_id):
 
         average_rating /= len(ratings)
         average_rating = round(average_rating, 1)
+        percent_rating = (average_rating / 5) * 100
 
     context = {
         'form': form,
@@ -36,7 +38,8 @@ def index(request, book_id):
         'username': username,
         'book': book, 'author': author,
         'ratings': ratings,
-        'average_rating': average_rating
+        'average_rating': average_rating,
+        'percent_rating': percent_rating
     }
     return render(request, "bookdetails/book_detail.html", context)
 
