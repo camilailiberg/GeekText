@@ -11,7 +11,7 @@ from cart.models import ShoppingCart
 def rating_create_view(request):
     rating = BookRating.objects.all()
     username = BookRating.objects.all()
-    form = RatingForm(request.POST or None)
+    form = RatingForm(request.POST)
     if form.is_valid():
         form.save()
 

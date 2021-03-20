@@ -6,5 +6,5 @@ from django.urls import path
 # Create your views here.
 
 urlpatterns = [
-    path("", views.rating_create_view),
+    path("", views.rating_create_view, name='rating'),
 ]
