@@ -6,6 +6,9 @@ class Author(models.Model):
     author = models.CharField(max_length=200)
     bio = models.CharField(max_length=4000)
 
+    class Meta:
+        ordering = ['author']
+
     def __str__(self):
         return self.author
 

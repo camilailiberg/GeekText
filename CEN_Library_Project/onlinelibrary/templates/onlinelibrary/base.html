@@ -46,7 +46,7 @@
                 <input type="search" id="query" name="q"
                        placeholder="Search Book Title..."
                        aria-label="Search through for book">
-                <button>
+                <button type="button" class="btn btn-outline-light">
                     Search
                 </button>
             </form>
@@ -153,10 +153,11 @@
 <!-- main file -->
 
 <div id="content" , name="content" , class="main">
-    {% if user.is_authenticated %}
-    <div class="main-content">
         {% block content %}
         {% endblock %}
+    {% if user.is_authenticated %}
+    <div class="main-content">
+
     </div>
     {% else %}
     {% block notloggin %}
