@@ -11,8 +11,6 @@ class Author(models.Model):
         ordering = ['author']
 
     def __str__(self):
-
-    def str(self):
         return self.author
 
 
