@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from .models import WishList
+from cart.models import ShoppingCart
+from cart.models import ShoppingCartItem
+from register.models import Profile
 from bookdetails.models import Book
 from cart.models import ShoppingCart
 from cart.models import ShoppingCartItem
 
-
 # Create your views here.
+
 
 
 def index(response, id):  # good to go
@@ -26,8 +29,13 @@ def wishlist(response):  # good to go
         if response.POST.get("new"):
             txt = response.POST.get("new")
             if len(txt) > 2:
-                wl.create(name=txt, primary=False, user=response.user)
-                return redirect('/wishlist/')
+                if response.user.profile.wishlistCounter < 3:
+                    response.user.profile.addWishlist()
+                    response.user.profile.save()
+                    wl.create(name=txt, primary=False, user=response.user)
+                    return redirect('/wishlist/')
+                else:
+                    raise Exception("Maximum number of List")
             else:
                 raise Exception("Invalid Name")
 
@@ -38,6 +46,8 @@ def delete_wishlist(request, id):  # good to go
     wl = WishList.objects.get(id=id)
     if request.method == "POST":
         wl.delete()
+        request.user.profile.wishlistCounter = request.user.profile.wishlistCounter - 1
+        request.user.profile.save()
         return redirect('/wishlist/')
 
     return render(request, "wishlist/delete.html", {'wl': wl})
