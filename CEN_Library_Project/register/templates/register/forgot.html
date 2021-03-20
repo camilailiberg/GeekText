@@ -12,6 +12,7 @@
 	<!-- Main Form -->
 	<div class="login-form-1">
 		<form id="forgot-password-form" class="text-left">
+			{% csrf_token %}
 			<div class="etc-login-form">
 				<p>When you fill in your registered email address, you will be sent instructions on how to reset your password.</p>
 			</div>

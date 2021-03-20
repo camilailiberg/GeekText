@@ -36,7 +36,7 @@ class ShoppingCartItem(models.Model):
         return self.book.title
 
     def total(self):
-        return round(self.quantity * self.book.getprice(), 2)
+        return round(self.quantity * self.book.price, 2)
 
     def getbookname(self):
         return self.book.title
