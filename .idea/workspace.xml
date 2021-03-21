@@ -4,19 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="" />
+=======
     <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/GeekText.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeekText.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/CEN_Library_Project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/CEN_Library_Project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/templates/bookdetails/book_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/templates/bookdetails/book_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/bookdetails/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/account_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/account_summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/static/ratingReview/rating.js" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/static/ratingReview/rating.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/static/ratingReview/ratingStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/static/ratingReview/ratingStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/ratingReview/views.py" afterDir="false" />
     </list>
+>>>>>>> origin/RatingReview_Sprint4
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CEN_Library_Project/bookdetails" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -61,6 +72,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\egami\Documents\GitHub\GeekText\CEN_Library_Project\bookdetails" />
       <recent name="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary" />
       <recent name="$PROJECT_DIR$/CEN_Library_Project/register/templates/register" />
       <recent name="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary" />
@@ -118,6 +130,29 @@
       <workItem from="1615043907149" duration="15287000" />
       <workItem from="1615071544850" duration="9818000" />
       <workItem from="1615081702564" duration="745000" />
+<<<<<<< HEAD
+      <workItem from="1615088719678" duration="680000" />
+      <workItem from="1615134979662" duration="592000" />
+      <workItem from="1615172108532" duration="629000" />
+      <workItem from="1615328363929" duration="570000" />
+      <workItem from="1615329928994" duration="762000" />
+      <workItem from="1615597168154" duration="3869000" />
+      <workItem from="1615601263329" duration="4850000" />
+      <workItem from="1615910112319" duration="1335000" />
+      <workItem from="1615917279916" duration="688000" />
+      <workItem from="1615917986603" duration="800000" />
+      <workItem from="1615928642922" duration="4205000" />
+      <workItem from="1616179790096" duration="5421000" />
+      <workItem from="1616266661992" duration="260000" />
+      <workItem from="1616266942835" duration="758000" />
+=======
+      <workItem from="1615499364625" duration="11331000" />
+      <workItem from="1615856774271" duration="6252000" />
+      <workItem from="1616101757045" duration="1636000" />
+      <workItem from="1616181409690" duration="5588000" />
+      <workItem from="1616188669809" duration="926000" />
+      <workItem from="1616257911125" duration="5772000" />
+>>>>>>> origin/RatingReview_Sprint4
     </task>
     <servers />
   </component>

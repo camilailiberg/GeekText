@@ -1,28 +1,32 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, UserChangeForm
+from .forms import RegisterForm
 from django.views import generic
 from .models import Profile
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+
 
 def register(response):
-
     if response.method == "POST":
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
 
-        return redirect("/")
+            return redirect("login")
     else:
         form = RegisterForm(response.POST)
 
     return render(response, "register/register.html", {"form": form})
 
+
 def edit(response):
     userid = response.user.id
     profile = Profile.objects.get(id=userid)
     user = response.user
-    return render(response, "registration/edit_profile.html", {"user": user,"profile": profile})
+    return render(response, "registration/edit_profile.html", {"user": user, "profile": profile})
 
-#here
+
+# here
 def edit_username(request):
     userid = request.user.id
     profile = Profile.objects.get(id=userid)
@@ -31,6 +35,7 @@ def edit_username(request):
         user.username = request.POST['username']
         user.save()
     return redirect('/register/account')
+
 
 def edit_email(request):
     userid = request.user.id
@@ -111,6 +116,6 @@ def edit_address(request):
 
 def account(request):
     userid = request.user.id
-    profile = Profile.objects.get(id = userid)
+    profile = Profile.objects.get(id=userid)
     user = request.user
     return render(request, "registration/account_summary.html", {"user": user, "profile": profile})

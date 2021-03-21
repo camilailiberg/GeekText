@@ -12,24 +12,41 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"></script>
 
+  </head>
     {% load static %}
 
+    <!--TODO: Let Christian know that I added this to connect with the CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'onlinelibrary/style.css' %}">
+
     <title>{% block title %}Online Library{% endblock %}</title>
+
+    <script src="jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+
+   $('#content1').load("login.html");
+    </script>
 
     <style>
         /* Modify the background color */
 
         .navbar-custom {
-            background-color:#68836a;
+            background-color:#345458;
+        }
+
+        .btn-customs{
+        background-color:white;
+
+        border-color:#ced4da;
+
         }
     </style>
 </head>
-<style>
-</style>
 
 <body>
 
@@ -38,18 +55,46 @@
     {% if user.is_authenticated %}
     <div class="container-fluid">
         <div class="col">
-            <a class="navbar-brand" href="#"><img src="/media/bookImages/logo_geek_text.png" alt="logo" height="75%"
-                                                  width="20%"></a>
+            <a class="navbar-brand" href="#"><img src="/media/bookImages/retry.png" alt="logo" height="75%"
+                                                  width="30%"></a>
         </div>
         <div class="col" style="text-align: center;">
-            <form role="search" id="form">
-                <input type="search" id="query" name="q"
-                       placeholder="Search Book Title..."
-                       aria-label="Search through for book">
-                <button>
-                    Search
-                </button>
-            </form>
+<!--<<<<<<< HEAD-->
+<!--            <form role="search" id="form">-->
+<!--                <input type="search" id="query" name="q"-->
+<!--                       placeholder="Search Book Title..."-->
+<!--                       aria-label="Search through for book">-->
+<!--                <button type="button" class="btn btn-outline-light">-->
+<!--                    Search-->
+<!--=======-->
+                <!--TODO: THIS IS THE SEARCH BAR THAT CHRISTIAN CREATED -->
+<!--            <div class="input-group mb-3 mt-3">-->
+<!--                <div class="dropdown">-->
+<!--                    <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" id="dropdownMenuButton"-->
+<!--                            data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        All-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
+<!--                        <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+
+<!--                <input type="text" class="form-control" placeholder="Search by Title..." aria-label="Example text with two button addons">-->
+<!--                <span class="border-left-0">-->
+<!--                    <button type="button" class="btn btn-customs border-left-0 rounded-0">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"-->
+<!--                         class="bi bi-search" viewBox="0 0 16 16">-->
+<!--                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>-->
+<!--                    </svg>-->
+<!--&gt;>>>>>> origin/bookDetails-->
+<!--                </button>-->
+<!--                </span>-->
+
+<!--            </div>-->
+            <!-- TODO: THIS IS WHERE CHRISTIAN SEARCH BAR CODE ENDS -->
+
         </div>
         <div class="col">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -60,7 +105,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/browse">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -93,30 +138,51 @@
             <div class="container-fluid">
 
                 <div class="col">
-                    <a class="navbar-brand" href="#"><img src="/media/bookImages/logo_geek_text.png" alt="logo"
-                                                          height="75%"
-                                                          width="20%"></a>
+                    <a class="navbar-brand" href="#"><img src="/media/bookImages/retry.png" alt="logo" height="75%"
+                                                  width="30%"></a>
                 </div>
-                <div class="col" style="text-align: center;">
-                    <form role="search" id="form1">
-                        <input type="search" id="query1" name="q"
-                               placeholder="Search Book Title..."
-                               aria-label="Search through for book">
-                        <button>
-                            Search
-                        </button>
-                    </form>
-                </div>
+
+                <!--TODO: THIS IS THE SEARCH BAR THAT CHRISTIAN CREATED -->
+<!--                <div class="col" style="text-align: center;">-->
+<!--                    <div class="input-group mb-3 mt-3">-->
+<!--                <div class="dropdown">-->
+<!--                    <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" id="dropdownMenuButton1"-->
+<!--                            data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                        All-->
+<!--                    </button>-->
+<!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
+<!--                        <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+
+<!--                <input type="text" class="form-control" placeholder="Search by Title..." aria-label="Example text with two button addons">-->
+<!--                <span class="border-left-0">-->
+<!--                    <button type="button" class="btn btn-customs border-left-0 rounded-0">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"-->
+<!--                         class="bi bi-search" viewBox="0 0 16 16">-->
+<!--                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--                </span>-->
+
+<!--            </div>-->
+<!--                </div>-->
+                <!--TODO: THIS IS WHERE CHRISTIAN'S SEARCH BAR CODE ENDS -->
+
+
                 <div class="col">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNavDropdown"
                             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown1">
+                    <div class="collapse navbar-collapse">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/login">Home</a>
+<!--                                <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#signinModal">Home</a>-->
+                                <a class="nav-link active" aria-current="page" href="/browse">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
@@ -124,13 +190,15 @@
                                     Hello, Sign in
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/login">Sign in</a></li>
-                                    <li><a class="dropdown-item" href="/login">Account</a></li>
-                                    <li><a class="dropdown-item" href="/login">Wishlist</a></li>
+                                    <li><a class="dropdown-item" href="/login" data-bs-toggle="modal" data-bs-target="#signinModal">Sign in</a></li>
+<!--                                    <li><a class="dropdown-item" href="/login" data-bs-toggle="modal" data-bs-target="#signinModal">Account</a></li>-->
+                                    <li><a class="dropdown-item" aria-current="page" href="/login">Account</a></li>
+                                    <li><a class="dropdown-item" aria-current="page" href="/login">Wishlist</a></li>
+<!--                                    <li><a class="dropdown-item" href="/login" data-bs-toggle="modal" data-bs-target="#signinModal">Wishlist</a></li>-->
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/login">
+                                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signinModal">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor"
                                          class="bi bi-bag"
                                          viewBox="0 0 16 16">
@@ -145,6 +213,7 @@
 
 
             {% endif %}
+
         </div>
     </div>
 </nav>
@@ -153,10 +222,11 @@
 <!-- main file -->
 
 <div id="content" , name="content" , class="main">
-    {% if user.is_authenticated %}
-    <div class="main-content">
         {% block content %}
         {% endblock %}
+    {% if user.is_authenticated %}
+    <div class="main-content">
+
     </div>
     {% else %}
     {% block notloggin %}
