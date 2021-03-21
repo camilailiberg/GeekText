@@ -7,7 +7,7 @@ from cart.models import ShoppingCart
 
 class BookRating(models.Model):
 
-    book = models.ForeignKey("bookdetails.Book", on_delete=models.CASCADE, default=0, related_name="ratings")
+    # book = models.ForeignKey("bookdetails.Book", on_delete=models.CASCADE, default=0, related_name="ratings")
 
 
     RATE = (
@@ -19,11 +19,11 @@ class BookRating(models.Model):
     )
 # <<<<<<< HEAD
 
-#     rating = models.CharField(choices=RATE, max_length=128, default = 1)
-#     review = models.CharField(max_length=128, default='Write Review')
+    rating = models.CharField(choices=RATE, max_length=128, default = 1)
+    review = models.CharField(max_length=128, default='Write Review')
 # =======
-    rating = models.CharField(choices=RATE, max_length=128, default=1)
-    name = models.CharField(max_length=128, default='Write Review')
+#     rating = models.CharField(choices=RATE, max_length=128, default=1)
+#     name = models.CharField(max_length=128, default='Write Review')
 # >>>>>>> origin/bookDetails
     username = models.CharField(max_length=128, default="")
 

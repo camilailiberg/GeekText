@@ -198,8 +198,8 @@
 
                     <label for="id_review"></label><textarea name="review" cols="40" rows="5" maxlength="128" required="" id="id_review" class="lead">Write Review</textarea>
 
-                    <input type="text" name="first_name" maxlength="128" required="" id="id_last_name" value="user.first_name" hidden>
-                    <input type="text" name="last_name" maxlength="128" required="" id="id_first_name" value="user.last_name" hidden>
+                    <input type="text" name="first_name" maxlength="128" required="" id="id_last_name" value="{{user.first_name}}" hidden>
+                    <input type="text" name="last_name" maxlength="128" required="" id="id_first_name" value="{{user.last_name}}" hidden>
 
                     <br>
 
@@ -219,7 +219,7 @@
                     {% for q in username %}
                     {% if q.book.title == book.title %}
                         {% if q.nickName == 0 %}
-                            <div class="lead"><b>{{user.first_name}} {{user.last_name}}</b></div>
+                            <div class="lead"><b>{{q.first_name}} {{q.last_name}}</b></div>
                         {% endif %}
 
                         {% if q.nickName == 1 %}
