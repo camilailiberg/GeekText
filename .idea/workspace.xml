@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6dc3070-b4b6-47f4-a5fb-a6057cd57bff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GeekText.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GeekText.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/browse/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/browse/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/cart/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart/shoppingcart.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/cart/templates/cart/shoppingcart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/CEN_Library_Project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/CEN_Library_Project/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/static/onlinelibrary/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/static/onlinelibrary/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/onlinelibrary/templates/onlinelibrary/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/account_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/account_summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/templates/registration/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEN_Library_Project/register/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CEN_Library_Project/register/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

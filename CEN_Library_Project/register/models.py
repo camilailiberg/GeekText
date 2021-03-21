@@ -10,7 +10,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile", null=True)
     address = models.CharField(max_length=200)
     homeAddress = models.CharField(max_length=200)
-    # creditCard = models.IntegerField() # TODO: MAx and min length
+    # Changes I made
+    # creditCard = models.CharField(max_length=19) #New code TODO: MAx and min length ******
+    # creditCard2 = models.CharField(max_length=19)#^^^^^^^^
+    # creditCard3 = models.CharField(max_length=19)#^^^^^^^^
     wishlistCounter = models.IntegerField(default=0)
 
     def __str__(self):

@@ -81,6 +81,33 @@ def edit_address(request):
         profile.save()
     return redirect('/register/account')
 
+##New Code here!!##
+# def edit_credit_card(request):
+#     userid = request.user.id
+#     profile = Profile.objects.get(id=userid)
+#     user = request.user
+#     if request.method == "POST":
+#         profile.creditCard = request.POST['creditcard']
+#         profile.save()
+#     return redirect('/register/account')
+
+# def edit_credit_card2(request):
+#     userid = request.user.id
+#     profile = Profile.objects.get(id=userid)
+#     user = request.user
+#     if request.method == "POST":
+#         profile.creditCard2 = request.POST['creditcard2']
+#         profile.save()
+#     return redirect('/register/account')
+
+# def edit_credit_card3(request):
+#     userid = request.user.id
+#     profile = Profile.objects.get(id=userid)
+#     user = request.user
+#     if request.method == "POST":
+#         profile.creditCard3 = request.POST['creditcard3']
+#         profile.save()
+#     return redirect('/register/account')
 
 def account(request):
     userid = request.user.id
