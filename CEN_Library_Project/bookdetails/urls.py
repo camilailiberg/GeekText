@@ -9,4 +9,5 @@ from django.urls import path
 urlpatterns = [
     path('<int:book_id>', views.index, name='index'),
     path('', views.home, name='home'),
+    path("movebooktocart/<int:bookid>", views.move_book_to_cart, name="move_book_to_cart"),
 ]

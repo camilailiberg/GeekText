@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Book
 from .models import RatingReview
 from .forms import RatingForm
+from cart.models import ShoppingCart, ShoppingCartItem
+from cart.views import *
 from django.views.generic import TemplateView
 
 # Create your views here.
@@ -46,6 +48,32 @@ def index(request, book_id):
 
 def home(response):
     return HttpResponse("<h1>hi</h1>")
+
+# TODO: FIX THIS
+def move_book_to_cart(request, bookid):
+    userid = request.user.id
+    bk = Book.objects.get(id=bookid)
+    cart = ShoppingCart.objects.get(id=userid)
+
+    if request.method == "POST":
+        # for every shoppingcartitem in the cart object of the user
+        for item in cart.shoppingcartitem_set.all():
+            #  if the item is not marked as ordered and the book saved in the shoppingcartitem object
+            # is the same book that we are moving from wishlist
+            if item.ordered == False and item.book == bk:
+                item.quantity = item.quantity + 1  # Update the quantity of that shippingcartitem
+                if item.savedforlater:  # if the shoppingcartitem object that holds the book being moved is in the
+                    # saved for later section of the shopping cart
+                    item.savedforlater = False  # take it out of the saved for later section and move it to the main
+                    # section of the shopping cart
+                item.save()
+                cart.save()
+                return redirect('index', bookid)
+                # return redirect('cart')
+        cartitem = ShoppingCartItem.objects.all()
+        cartitem.create(shoppingcart=cart, book=bk, quantity=1, ordered=False, savedforlater=False)
+        return redirect('index', bookid)
+        # return redirect('cart')
 
 
     
