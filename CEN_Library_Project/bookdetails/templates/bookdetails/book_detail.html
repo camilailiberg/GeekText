@@ -69,6 +69,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Importing js file for Modal image -->
+            <script type="text/javascript" src="{% static 'javascript/image.js' %}"></script>
+        </div>
+        <div class="col">
+            <h2 style="font-family:serif">{{ book.title }}</h2>
+            <p>by
+                {% for name in author %}
+                <a href="" style="color: #68836a">{{ name }} </a> &nbsp
+                {% endfor %}
+            </p>
+            <hr>
+            <p>Rating: {{ average_rating }} </p>
+            <p>{{ book.genre }} </p>
+            <p>${{ book.price }} </p>
+            <p>Publisher: {{ book.publisher }} </p>
+            <p>Release Date: {{ book.release_date }} </p>
         </div>
     </div>
 </section>
@@ -129,6 +146,141 @@
 
 <section id="reviews" class="bg-light">
     <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Customer Reviews</h2>
+          <p class="lead">
+              {% for q in rating %}
+                {% if q.username == user.get_username %}
+                    {% if q.book_title == book.title %}
+
+                    <script>window.onload = function EndClick() {
+                            var x = document.getElementById("ReviewButton");
+                            x.style.display = "none";
+
+                        }
+                    </script>
+                    {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              <button type="button" class = "ReviewButton" onclick="OnClick()" id = "ReviewButton">Create Review</button>
+
+            <form  method="POST" class = "rating" id = 'ratingForm'>
+                {% csrf_token %}
+
+                <div id="ratingReview" style="display:none;">
+                    <div class="stars">
+                        <span class = "left" id="id_rating">
+
+                            <input type="radio" name="rating" value="5" required="" id="id_rating_4">
+                            <label for="id_rating_4" class = "fas fa-star"></label>
+
+                            <input type="radio" name="rating" value="4" required="" id="id_rating_3">
+                            <label for="id_rating_3" class = "fas fa-star"></label>
+
+                            <input type="radio" name="rating" value="3" required="" id="id_rating_2">
+                            <label for="id_rating_2" class = "fas fa-star"></label>
+
+                            <input type="radio" name="rating" value="2" required="" id="id_rating_1">
+                            <label for="id_rating_1" class = "fas fa-star"></label>
+
+                            <input type="radio" name="rating" value="1" required="" id="id_rating_0" checked = "">
+                            <label for="id_rating_0" class = "fas fa-star"></label>
+                        </span>
+                    </div>
+
+                    <br><br>
+
+
+
+                    <label for="id_username"></label><input type="text" name="username" maxlength="128" required="" id="id_username" value = "{{user.get_username}}" hidden>
+
+                    <label for="id_review"></label><textarea name="review" cols="40" rows="5" maxlength="128" required="" id="id_review" class="lead">Write Review</textarea>
+
+                    <input type="text" name="first_name" maxlength="128" required="" id="id_last_name" value="{{user.first_name}}" hidden>
+                    <input type="text" name="last_name" maxlength="128" required="" id="id_first_name" value="{{user.last_name}}" hidden>
+
+                    <br>
+
+                    <p class="lead" style="display: inline-block">Nickname</p>
+                    <input type="checkbox" name="nickName" id="id_nickName">
+
+
+                    <label for="id_book"></label><input name="book" cols="10" rows="1" required="" id="id_book"value = {{book.id}} hidden>
+                    <label for="id_book"></label><input name="book_title" cols="20" rows="1" required="" id="id_book_title"value = "{{ book.title }}" hidden>
+
+                    <br>
+
+                    <input type="submit" class = "SubmitButton" value="submit" onclick="OnClick()">
+                </div>
+            </form>
+                <body class = "PastRatings">
+                    {% for q in username %}
+                    {% if q.book.title == book.title %}
+                        {% if q.nickName == 0 %}
+                            <div class="lead"><b>{{q.first_name}} {{q.last_name}}</b></div>
+                        {% endif %}
+
+                        {% if q.nickName == 1 %}
+                            <div class="lead"><b>{{q.username}}</b></div>
+                        {% endif %}
+
+                        {% if q.rating == "5" %}
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                        {% endif %}
+
+                        {% if q.rating == "4" %}
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star"></p>
+                        {% endif %}
+
+                        {% if q.rating == "3" %}
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star"></p>
+                            <p class = "fas fa-star"></p>
+                        {% endif %}
+
+                        {% if q.rating == "2" %}
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star"></p>
+                            <p class = "fas fa-star"></p>
+                            <p class = "fas fa-star"></p>
+                        {% endif %}
+
+                        {% if q.rating == "1" %}
+                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                            <p class = "fas fa-star"></p>
+                            <p class = "fas fa-star"></p>
+                            <p class = "fas fa-star"></p>
+                            <p class = "fas fa-star"></p>
+                        {% endif %}
+
+
+                        <div class="lead">{{q.review}}</div>
+                        <br>
+                    {% endif %}
+                    {% endfor %}
+                </body>
+                <script>
+                    if ( window.history.replaceState ) {
+                        window.history.replaceState( null, null, window.location.href );
+
+                    }
+                </script>
+
+
+          </p>
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <h2 style="text-align: center;">Customer Reviews</h2>
@@ -220,6 +372,19 @@
         </div>
     </div>
 </section>
+
+
+<!-- Rating System -->
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
+    <link href="{% static 'ratingReview/ratingStyle.css' %}" rel="stylesheet">
+    <script src="{% static 'ratingReview/rating.js' %}" type="text/javascript"></script>
+
+    <title>Rating</title>
+</head>
+
 
 <!-- Footer -->
 <footer class="py-5 bg-dark">

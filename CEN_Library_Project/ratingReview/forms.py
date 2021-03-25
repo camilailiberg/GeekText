@@ -21,11 +21,10 @@ class RatingForm(forms.ModelForm):
         model = BookRating
         fields = [
             'rating',
-            'name',
             'username',
-            'id',
+            'review',
         ]
-        widgets = {'rating' : forms.RadioSelect, 'name' : Textarea}
+        widgets = {'rating' : forms.RadioSelect, 'review' : Textarea}
 
 
 

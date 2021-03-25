@@ -55,6 +55,7 @@ def move_to_cart(request, cartitemid):
 
     return redirect('/ShoppingCart/')
 
+
 def update_quantity(request, cartitemid):
     userid = request.user.id
     cart = ShoppingCart.objects.get(id=userid)
@@ -69,6 +70,7 @@ def update_quantity(request, cartitemid):
         cart.save()
 
     return redirect('/ShoppingCart/')
+
 
 def checkout(request):
     userid = request.user.id

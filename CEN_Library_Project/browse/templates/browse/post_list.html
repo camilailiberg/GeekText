@@ -6,20 +6,27 @@
 
 {% block content %}
         <head>
+            <!-- To use styles -->
             <link rel="stylesheet" href="{% static 'css/style_browse.css' %}">
         </head>
         {% block body %}
+            <!-- Form for the filter -->
             <form action="" method="GET">
+                <br>
                 <div class="form-row">
                     <div class="col-offset">
-                        <input style="width: 300px;" type="text" name="title" placeholder="Search for book by title." value="">
+                        <!-- Search for title text box -->
+                        <input style="width: 300px; margin-left: 5%;" type="text" name="title" placeholder="Search for book by title." {% if title_query is not None %} value="{{ title_query }}"
+                                                                                                                                       {% else %} value="" {% endif %}>
                     </div>
-                    <div class="col-offset">
+                    <div class="col-offset" style="margin-left: 15px;">
+                        <!-- Select Genre -->
                         {{book_form.as_p}}
                     </div>
-                    <div class="col">
+                    <div class="col-offset">
+                        <!-- Star Rating Filter -->
                         <div class="rate">
-                            <span class="filter_rating">Filter by Rating:  </span>
+                            <span class="filter_rating" style="float:left;">Filter by Rating:  </span>
                             <input type="radio" id="star5" name="rate" value="5" {% if star_select == "5" %} checked="checked" {%endif%} />
                             <label for="star5" title="5 stars">5 stars</label>
                             <input type="radio" id="star4" name="rate" value="4" {% if star_select == "4" %} checked="checked" {%endif%} />
@@ -32,13 +39,79 @@
                             <label for="star1" title="1 stars or up">1 star or up</label>
                         </div>
                     </div>
+                    <div class="col-offset">
+                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="sortBy"/>
+                            <option value="id" selected>Sort books by</option>
+                            <option value="id">Default</option>
+                            <option value="title">Title</option>
+                            <option value="authors">Author</option>
+                            <option value="price">Price</option>
+                            <option value="rating">Rating</option>
+                            <option value="release_date">Date</option>
+                        </select>
+                    </div>
+                    <div class="col-offset">
+                        <span class="sortOrderClass" style="padding: 10px;">Sort Order: </span>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="ascend" name="sortOrder" value="ascend">
+                            <label class="form-check-label" for="ascend">Ascending</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="descend" name="sortOrder" value="descend">
+                            <label class="form-check-label" for="descend">Descending</label>
+                        </div>
+                    </div>
+                    <div class="col-offset">
+                        <select class="form-select form-select-sm" name="booksPerPage"/>
+                            <option value="10" {% if page_select == 0 %} selected {% endif %}>Number of Books per Page</option>
+                            <option value="10" {% if page_select == 10 %} selected {% endif %}>10 (Default)</option>
+                            <option value="20" {% if page_select == 20 %} selected {% endif %}>20</option>
+                        </select>
+                    </div>
                 </div>
+                <br>
                 <div class="form-row">
-                    <input class="btn btn-dark" type="submit" value="Submit" />
+                    <div class="col-offset-1" style="margin-left: 15px;">
+                        <!-- Submit Button -->
+                        <input class="btn btn-dark" type="submit" name="submit" value="Submit" style="margin-left: 1%;"/>
+                    </div>
+                    <div class="col-offset-1">
+                        <!-- Clear All Button -->
+                        <a class="btn btn-dark" href="{% url 'post_list' %}" style="margin-left: 1%; width: 100px">Clear All</a>
+                    </div>
                 </div>
             </form>
+            <br>
+            <br>
             <h1 style="text-align: center">Browse Books</h1>
+            <br>
+            <!-- Pagination -->
+            <div class="text-center" style="">
+                <ul class=" pagination pagination-lg justify-content-center">
+                    {% if books_page.has_previous %}
+                        <li class="page-item"><a class = "page-link" href="?page=1{{ attach_url }}" style="color: white; background-color: #68836a;">&laquo; First</a></li>
+                        <li class="page-item"><a class="page-link" style="color: white; background-color: #68836a;" href="?page={{ books_page.previous_page_number }}{{ attach_url }}">Previous</a></li>
+                    {% else %}
+                        <li class="page-item-disabled"> <a class = "page-link" style="color: #68836a; background-color: white;">&laquo; First</a></li>
+                        <li class="page-item-disabled"><a class="page-link" style="color: #68836a; background-color: white;">Previous</a></li>
+                    {% endif %}
+
+                    <span class="current">
+                        <a class="page-link" style="color: #68836a; background-color: white;">Page {{ books_page.number }}</a>
+                    </span>
+
+                    {% if books_page.has_next %}
+                        <li class="page-item"><a class = "page-link" href="?page={{ books_page.next_page_number }}{{ attach_url }}" style="color: white; background-color: #68836a;">Next</a></li>
+                        <li class="page-item"><a class="page-link" style="color: white; background-color: #68836a;" href="?page={{ books_page.paginator.num_pages }}{{ attach_url }}">Last &raquo;</a></li>
+                    {% else %}
+                        <li class="page-item-disabled"> <a class = "page-link" style="color: #68836a; background-color: white;">Next</a></li>
+                        <li class="page-item-disabled"><a class="page-link" style="color: #68836a; background-color: white;">Last &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- Book List Table-->
             <div class="bookTable">
+                <!-- Book List Table Headers -->
                 <div class="bookRow">
                     <div class="headerCell"><p>Cover</p></div>
                     <div class="headerCell"><p>Book Title</p></div>
@@ -47,16 +120,47 @@
                     <div class="headerCell"><p>Price</p></div>
                     <div class="headerCell"><p>Rating</p></div>
                 </div>
-                {% for book in books %}
+                <!-- For loop that gets a book from the query -->
+                {% for book in books_page %}
+                <!-- Values of the books (Cover, Title, Author, Genre, Price, Rating) -->
                 <div class="bookRow">
                     <div class="bookCell"><img src="{{book.cover.url}}" style="width:200px;height:200px;"></div>
-                    <div class="bookCell"> {{book.title}} </div>
-                    <div class="bookCell"> {{book.author}} </div>
+                    <div class="bookCell_title"> {{book.title}} </div>
+
+                    <div class="bookCell">  {% for book_author in book.authors.all %}
+                                                <p>{{ book_author }}</p>
+                                            {% endfor %}
+                    </div>
+
                     <div class="bookCell">{{book.genre}}</div>
                     <div class="bookCell">${{book.price}}</div>
                     <div class="bookCell">{{book.rating}}</div>
                 </div>
                 {% endfor %}
+            </div>
+            <br>
+            <div class="text-center" style="">
+                <ul class=" pagination pagination-lg justify-content-center">
+                    {% if books_page.has_previous %}
+                        <li class="page-item"><a class = "page-link" href="?page=1{{ attach_url }}" style="color: white; background-color: #68836a;">&laquo; First</a></li>
+                        <li class="page-item"><a class="page-link" style="color: white; background-color: #68836a;" href="?page={{ books_page.previous_page_number }}{{ attach_url }}">Previous</a></li>
+                    {% else %}
+                        <li class="page-item-disabled"> <a class = "page-link" style="color: #68836a; background-color: white;">&laquo; First</a></li>
+                        <li class="page-item-disabled"><a class="page-link" style="color: #68836a; background-color: white;">Previous</a></li>
+                    {% endif %}
+
+                    <span class="current">
+                        <a class="page-link" style="color: #68836a; background-color: white;">Page {{ books_page.number }}</a>
+                    </span>
+
+                    {% if books_page.has_next %}
+                        <li class="page-item"><a class = "page-link" href="?page={{ books_page.next_page_number }}{{ attach_url }}" style="color: white; background-color: #68836a;">Next</a></li>
+                        <li class="page-item"><a class="page-link" style="color: white; background-color: #68836a;" href="?page={{ books_page.paginator.num_pages }}{{ attach_url }}">Last &raquo;</a></li>
+                    {% else %}
+                        <li class="page-item-disabled"> <a class = "page-link" style="color: #68836a; background-color: white;">Next</a></li>
+                        <li class="page-item-disabled"><a class="page-link" style="color: #68836a; background-color: white;">Last &raquo;</a></li>
+                    {% endif %}
+                </ul>
             </div>
             <br>
             <br>
