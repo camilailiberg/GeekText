@@ -49,7 +49,7 @@ def index(request, book_id):
 def home(response):
     return HttpResponse("<h1>hi</h1>")
 
-# TODO: FIX THIS
+
 def move_book_to_cart(request, bookid):
     userid = request.user.id
     bk = Book.objects.get(id=bookid)

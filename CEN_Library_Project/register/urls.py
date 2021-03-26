@@ -11,5 +11,7 @@ urlpatterns = [
     path("edit_home_address", views.edit_home_address, name="edit_home_address"),
     path("edit_address", views.edit_address, name="edit_address"),
     path("edit", views.edit, name="edit"),
+    path("payment_information", views.payment_info, name="payment_info"),
+    path("add_credit_card_information", views.add_credit_card_info, name="add_credit_card_info"),
 ]
 

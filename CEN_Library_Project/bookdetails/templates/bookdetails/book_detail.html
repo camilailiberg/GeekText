@@ -64,14 +64,12 @@
                         <p>${{ book.price }} </p>
                         <p>Publisher: {{ book.publisher }} </p>
                         <p>Release Date: {{ book.release_date }} </p>
-<!--                        TODO: FIX THIS -->
                         <form action="{% url 'move_book_to_cart' book.id%}" method="POST">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-primary btn-custom btn-lg rounded-0 "
                                 vertical-align="bottom">Add to Cart
                             </button>
                         </form>
-<!--                        TODO: FIX THIS-->
                     </div>
                 </div>
             </div>
