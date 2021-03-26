@@ -8,6 +8,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.utils.dateparse import parse_datetime
 
+
 def register(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
@@ -96,6 +97,13 @@ def account(request):
     return render(request, "registration/account_summary.html", {"user": user, "profile": profile})
 
 
+def payment_info(response):
+    userid = response.user.id
+    profile = Profile.objects.get(id=userid)
+    user = response.user
+    return render(response, "registration/payment_information.html", {"user": user, "profile": profile})
+
+
 def add_credit_card_info(request):
     userid = request.user.id
     profile = Profile.objects.get(id=userid)
@@ -106,11 +114,13 @@ def add_credit_card_info(request):
     invalidsecuritynumber = False
 
     if request.method == "POST":
+
         cardnumber = request.POST['cardnumber']
         if int(cardnumber) < 1000000000000:
             invalidcardnumber = True
             return render(request, "registration/add_credit_card.html",
                           {"user": user, "profile": profile, "invalidcardnumber": invalidcardnumber})
+
         expiration = request.POST['expirationdate']
         try:
             datetime_object = datetime.strptime(expiration, "%Y-%m-%d")
@@ -118,17 +128,19 @@ def add_credit_card_info(request):
             wrongformat = True
             return render(request, "registration/add_credit_card.html",
                           {"user": user, "profile": profile, "wrongformat": wrongformat})
-        # datetime_object = datetime.strptime(expiration, "%Y-%m-%d")
+
         securitynumber = request.POST['securitynumber']
         if int(securitynumber) < 100:
             invalidsecuritynumber = True
             return render(request, "registration/add_credit_card.html",
                           {"user": user, "profile": profile, "invalidsecuritynumber": invalidsecuritynumber})
+
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
         if datetime_object < datetime.today():
             message = True
-            return render(request, "registration/add_credit_card.html", {"user": user, "profile": profile, "message":message})
+            return render(request, "registration/add_credit_card.html", {"user": user, "profile": profile,
+                                                                         "message": message})
             raise Exception("Ups! Your credit card number either is expired or expires today.")
         CreditCard.objects.create(profile=profile, cardnumber=cardnumber, expiration=expiration,
                                   security=securitynumber, firstname=firstname, lastname=lastname)
@@ -137,8 +149,71 @@ def add_credit_card_info(request):
     return render(request, "registration/add_credit_card.html", {"user": user, "profile": profile})
 
 
-def payment_info(response):
-    userid = response.user.id
+def edit_credit_card_info(request, creditcardid):
+    userid = request.user.id
     profile = Profile.objects.get(id=userid)
-    user = response.user
-    return render(response, "registration/payment_information.html", {"user": user, "profile": profile})
+    user = request.user
+    creditcard = profile.creditcard_set.get(id=creditcardid)
+
+    if request.method == "POST":
+
+        cardnumber = request.POST['cardnumber']
+        if int(cardnumber) < 1000000000000:
+            return redirect('edit_credit_card_info', creditcardid)
+
+        expiration = request.POST['expirationdate']
+        try:
+            datetime_object = datetime.strptime(expiration, "%Y-%m-%d")
+        except ValueError:
+            wrongformat = True
+            return redirect('edit_credit_card_info', creditcardid)
+
+        securitynumber = request.POST['securitynumber']
+        if int(securitynumber) < 100:
+            return redirect('edit_credit_card_info', creditcardid)
+
+        firstname = request.POST['firstname']
+        lastname = request.POST['lastname']
+        if datetime_object < datetime.today():
+            invaliddate = True
+            return redirect('edit_credit_card_info', creditcardid)
+            raise Exception("Ups! Your credit card number either is expired or expires today.")
+
+        creditcard.firstname = firstname
+        creditcard.lastname = lastname
+        creditcard.cardnumber = cardnumber
+        creditcard.security = securitynumber
+        creditcard.expiration = expiration
+        creditcard.save()
+        return redirect('/register/payment_information')
+
+    context = {
+        "user": user, "profile": profile,
+        "creditcard": creditcard,
+    }
+    return render(request, "registration/edit_credit_card.html", context)
+
+
+# def edit_credit_card_error_message(response, creditcardid, wrongformat, invaliddate, invalidcardnumber,
+#                                    invalidsecuritynumber):
+#     userid = response.user.id
+#     profile = Profile.objects.get(id=userid)
+#     user = response.user
+#     creditcard = profile.creditcard_set.get(id=creditcardid)
+#     return render(response, "registration/edit_credit_card.html", {"user": user, "profile": profile,
+#                     "creditcard": creditcard, "wrongformat": wrongformat, "invaliddate": invaliddate,
+#                     "invalidcardnumber": invalidcardnumber, "invalidsecuritynumber": invalidsecuritynumber})
+
+
+def delete_credit_card_info(request, creditcardid):
+    userid = request.user.id
+    profile = Profile.objects.get(id=userid)
+    user = request.user
+    creditcard = profile.creditcard_set.get(id=creditcardid)
+
+    if request.method == "POST":
+        creditcard.delete()
+        profile.save()
+        return redirect('/register/payment_information')
+
+    return render(request, "registration/deletecreditcard.html", {"creditcard": creditcard})
