@@ -38,7 +38,7 @@ class Book(models.Model):
     release_date = models.DateField(default='Unknown')
     bestseller = models.BooleanField(default=False)
 
-    def str(self):
+    def __str__(self):
         return self.title
 
 
