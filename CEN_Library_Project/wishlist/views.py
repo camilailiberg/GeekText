@@ -23,6 +23,7 @@ def index(response, id):  # good to go
 
 def wishlist(response):  # good to go
     wl = WishList.objects.filter(user=response.user)
+    counter = 0
 
     if response.method == "POST":
         print(response.POST)
@@ -35,6 +36,10 @@ def wishlist(response):  # good to go
                     wl.create(name=txt, primary=False, user=response.user)
                     return redirect('/wishlist/')
                 else:
+                    message = "Ups! You cannot have more than 3 wish lists."
+                    for i in message:
+                        counter += 1
+                    return render(response, "wishlist/wishlisthome.html", {"wl": wl, "counter": counter, "message": message})
                     raise Exception("Maximum number of List")
             else:
                 raise Exception("Invalid Name")

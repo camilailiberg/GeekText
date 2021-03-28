@@ -5,6 +5,11 @@ Wish List
 {% endblock%}
 
 {% block content%}
+{% if counter > 0 %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endif %}
 <h1>Wish Lists:</h1>
 
 <form  action="#" method="post">
