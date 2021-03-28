@@ -97,11 +97,11 @@ def account(request):
     return render(request, "registration/account_summary.html", {"user": user, "profile": profile})
 
 
-def payment_info(response):
+def payment_info(response, errormessage):
     userid = response.user.id
     profile = Profile.objects.get(id=userid)
     user = response.user
-    return render(response, "registration/payment_information.html", {"user": user, "profile": profile})
+    return render(response, "registration/payment_information.html", {"user": user, "profile": profile, "errormessage": errormessage})
 
 
 def add_credit_card_info(request):
@@ -144,39 +144,42 @@ def add_credit_card_info(request):
             raise Exception("Ups! Your credit card number either is expired or expires today.")
         CreditCard.objects.create(profile=profile, cardnumber=cardnumber, expiration=expiration,
                                   security=securitynumber, firstname=firstname, lastname=lastname)
-        return redirect('/register/payment_information')
+        return redirect('/register/payment_information/0')
 
     return render(request, "registration/add_credit_card.html", {"user": user, "profile": profile})
 
 
-def edit_credit_card_info(request, creditcardid):
+def edit_credit_card_info(request, creditcardid, error):
     userid = request.user.id
     profile = Profile.objects.get(id=userid)
     user = request.user
     creditcard = profile.creditcard_set.get(id=creditcardid)
+    today = datetime.today()
 
     if request.method == "POST":
 
         cardnumber = request.POST['cardnumber']
-        if int(cardnumber) < 1000000000000:
-            return redirect('edit_credit_card_info', creditcardid)
+        # if int(cardnumber) < 1000000000000:
+        #     return redirect('edit_credit_card_info', creditcardid, 0)
 
         expiration = request.POST['expirationdate']
         try:
             datetime_object = datetime.strptime(expiration, "%Y-%m-%d")
         except ValueError:
-            wrongformat = True
-            return redirect('edit_credit_card_info', creditcardid)
+            # wrongformat = True
+            error = 2
+            return redirect('edit_credit_card_info', creditcardid, error)
 
         securitynumber = request.POST['securitynumber']
-        if int(securitynumber) < 100:
-            return redirect('edit_credit_card_info', creditcardid)
+        # if int(securitynumber) < 100:
+        #     return redirect('edit_credit_card_info', creditcardid)
 
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
-        if datetime_object < datetime.today():
-            invaliddate = True
-            return redirect('edit_credit_card_info', creditcardid)
+        if datetime_object < today:
+            # invaliddate = True
+            error = 1
+            return redirect('edit_credit_card_info', creditcardid, error)
             raise Exception("Ups! Your credit card number either is expired or expires today.")
 
         creditcard.firstname = firstname
@@ -185,24 +188,15 @@ def edit_credit_card_info(request, creditcardid):
         creditcard.security = securitynumber
         creditcard.expiration = expiration
         creditcard.save()
-        return redirect('/register/payment_information')
+        return redirect('/register/payment_information/0')
 
     context = {
         "user": user, "profile": profile,
         "creditcard": creditcard,
+        "today": today,
+        "error": error,
     }
     return render(request, "registration/edit_credit_card.html", context)
-
-
-# def edit_credit_card_error_message(response, creditcardid, wrongformat, invaliddate, invalidcardnumber,
-#                                    invalidsecuritynumber):
-#     userid = response.user.id
-#     profile = Profile.objects.get(id=userid)
-#     user = response.user
-#     creditcard = profile.creditcard_set.get(id=creditcardid)
-#     return render(response, "registration/edit_credit_card.html", {"user": user, "profile": profile,
-#                     "creditcard": creditcard, "wrongformat": wrongformat, "invaliddate": invaliddate,
-#                     "invalidcardnumber": invalidcardnumber, "invalidsecuritynumber": invalidsecuritynumber})
 
 
 def delete_credit_card_info(request, creditcardid):
@@ -214,6 +208,6 @@ def delete_credit_card_info(request, creditcardid):
     if request.method == "POST":
         creditcard.delete()
         profile.save()
-        return redirect('/register/payment_information')
+        return redirect('/register/payment_information/0')
 
     return render(request, "registration/deletecreditcard.html", {"creditcard": creditcard})

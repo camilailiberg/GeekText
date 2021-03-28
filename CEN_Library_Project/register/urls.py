@@ -11,8 +11,9 @@ urlpatterns = [
     path("edit_home_address", views.edit_home_address, name="edit_home_address"),
     path("edit_address", views.edit_address, name="edit_address"),
     path("edit", views.edit, name="edit"),
-    path("payment_information", views.payment_info, name="payment_info"),
+    path("payment_information/<int:errormessage>", views.payment_info, name="payment_info"),
     path("add_credit_card_information", views.add_credit_card_info, name="add_credit_card_info"),
-    path("edit_credit_card_information/<int:creditcardid>", views.edit_credit_card_info, name="edit_credit_card_info"),
-    path("delete_credit_card_information/<int:creditcardid>", views.delete_credit_card_info, name="delete_credit_card_info"),
+    path("edit_credit_card_information/<int:creditcardid>/<int:error>", views.edit_credit_card_info, name="edit_credit_card_info"),
+    path("delete_credit_card_information/<int:creditcardid>", views.delete_credit_card_info,
+         name="delete_credit_card_info"),
 ]

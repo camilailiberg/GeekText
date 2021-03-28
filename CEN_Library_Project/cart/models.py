@@ -14,11 +14,11 @@ class ShoppingCart(models.Model):
         return str(self.user.username) + "'s cart"
 
     def subtotal(self):
-        amount = 0.0
+        amount = 0.00
         for cartitem in self.shoppingcartitem_set.all():
             if not cartitem.savedforlater and not cartitem.ordered:
                 amount = amount + float(cartitem.quantity * cartitem.book.price)
-        return round(amount, 2)
+        return "%.2f" % amount
 
     def __repr__(self):
         return '<ShoppingCart object ({}) "{}">'.format(self.id, self.user.username)
