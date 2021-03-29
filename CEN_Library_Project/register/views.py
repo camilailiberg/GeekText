@@ -1,10 +1,11 @@
+from django.contrib.auth.forms import PasswordChangeForm
 from django.utils.timezone import get_current_timezone
 from datetime import datetime
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.views import generic
 from .models import Profile, CreditCard
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
 from django.utils.dateparse import parse_datetime
 from django.contrib.auth.models import User
@@ -223,3 +224,17 @@ def delete_credit_card_info(request, creditcardid):
         return redirect('/register/payment_information/0')
 
     return render(request, "registration/deletecreditcard.html", {"creditcard": creditcard})
+
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('/register/account')
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'registration/change_password.html', {"form": form})
