@@ -7,6 +7,7 @@ from .models import Profile, CreditCard
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.utils.dateparse import parse_datetime
+from django.contrib.auth.models import User
 
 
 def register(response):
@@ -29,15 +30,20 @@ def edit(response):
     return render(response, "registration/edit_profile.html", {"user": user, "profile": profile})
 
 
-# here
 def edit_username(request):
     userid = request.user.id
     profile = Profile.objects.get(id=userid)
     user = request.user
+    error = 0
+    newusername = request.POST['username']
     if request.method == "POST":
-        user.username = request.POST['username']
-        user.save()
-    return redirect('/register/account')
+        if User.objects.filter(username=newusername).exists():
+            error = 1
+            return render(request, "registration/edit_profile.html", {"user": user, "profile": profile, "error": error})
+        else:
+            user.username = newusername
+            user.save()
+            return redirect('/register/account')
 
 
 def edit_email(request):
@@ -45,9 +51,15 @@ def edit_email(request):
     profile = Profile.objects.get(id=userid)
     user = request.user
     if request.method == "POST":
-        user.email = request.POST['email']
-        user.save()
-    return redirect('/register/account')
+        newEmail = request.POST['email']
+
+        if User.objects.filter(email=newEmail).exists():
+            emailError = 1
+            return render(request, "registration/edit_profile.html", {"user": user, "profile": profile, "emailError": emailError})
+        else:
+            user.email = newEmail
+            user.save()
+            return redirect('/register/account')
 
 
 def edit_first_name(request):

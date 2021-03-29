@@ -4,6 +4,12 @@
 {% block title %} {{ls.name}} {% endblock %}
 
 {% block content %}
+<br>
+<button onclick="window.location.href='http://127.0.0.1:8000/wishlist';" type="button" class="btn btn-primary">
+    Back to Wish Lists
+</button>
+<br>
+<br>
     <h1>{{wl.name}}</h1>
     <ul>
        <table class="table">

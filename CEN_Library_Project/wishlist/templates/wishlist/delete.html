@@ -5,15 +5,22 @@ Delete
 {% endblock%}
 
 {% block content%}
+<style>
+        .information{
+            margin-top: 40px;
+            margin-left: 800px;
+        }
+    </style>
+<div class="information">
+    <p>Are you sure you want to delete "{{wl.name}}"?</p>
+    <button onclick="window.location.href='http://127.0.0.1:8000/wishlist/';" type="button" class="btn btn-danger">Cancel</button>
+    <br>
+    <br>
 
-<p>Are you sure you want to delete "{{wl.name}}"?</p>
-<button onclick="window.location.href='http://127.0.0.1:8000/wishlist/';" type="button" class="btn btn-danger">Cancel</button>
-<br>
-<br>
-
-<form action="{% url 'delete_wishlist' wl.id %}" method="POST">
-    {% csrf_token %}
-    <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
-</form>
+    <form action="{% url 'delete_wishlist' wl.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
+    </form>
+</div>
 
 {% endblock %}
