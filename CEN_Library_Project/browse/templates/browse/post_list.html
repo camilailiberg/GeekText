@@ -124,8 +124,16 @@
                 {% for book in books_page %}
                 <!-- Values of the books (Cover, Title, Author, Genre, Price, Rating) -->
                 <div class="bookRow">
-                    <div class="bookCell"><img src="{{book.cover.url}}" style="width:200px;height:200px;"></div>
-                    <div class="bookCell_title"> {{book.title}} </div>
+                    <div class="bookCell">
+                         <button onclick="window.location.href='http://127.0.0.1:8000/bookdetails/{{book.id}}';" type="button" >
+                            <img src="{{book.cover.url}}" style="width:200px;height:200px;">
+                         </button>
+                    </div>
+                    <div class="bookCell_title">
+                        <button onclick="window.location.href='http://127.0.0.1:8000/bookdetails/{{book.id}}';" type="button" class="btn btn-secondary">
+                            {{book.title}}
+                        </button>
+                    </div>
 
                     <div class="bookCell">  {% for book_author in book.authors.all %}
                                                 <p>{{ book_author }}</p>

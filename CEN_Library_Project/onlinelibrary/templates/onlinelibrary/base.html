@@ -55,7 +55,7 @@
     {% if user.is_authenticated %}
     <div class="container-fluid">
         <div class="col">
-            <a class="navbar-brand" href="#"><img src="/media/bookImages/retry.png" alt="logo" height="75%"
+            <a class="navbar-brand" href="/browse"><img src="/media/bookImages/retry.png" alt="logo" height="75%"
                                                   width="30%"></a>
         </div>
         <div class="col" style="text-align: center;">
@@ -132,7 +132,7 @@
             <div class="container-fluid">
 
                 <div class="col">
-                    <a class="navbar-brand" href="#"><img src="/media/bookImages/retry.png" alt="logo" height="75%"
+                    <a class="navbar-brand" href="/browse"><img src="/media/bookImages/retry.png" alt="logo" height="75%"
                                                   width="30%"></a>
                 </div>
 
@@ -184,7 +184,8 @@
                                     Hello, Sign in
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/login" data-bs-toggle="modal" data-bs-target="#signinModal">Sign in</a></li>
+<!--                                    <li><a class="dropdown-item" href="/login" data-bs-toggle="modal" data-bs-target="#signinModal">Sign in</a></li>-->
+                                    <li><a class="dropdown-item" aria-current="page" href="/login">Sign in</a></li>
 <!--                                    <li><a class="dropdown-item" href="/login" data-bs-toggle="modal" data-bs-target="#signinModal">Account</a></li>-->
                                     <li><a class="dropdown-item" aria-current="page" href="/login">Account</a></li>
                                     <li><a class="dropdown-item" aria-current="page" href="/login">Wishlist</a></li>
