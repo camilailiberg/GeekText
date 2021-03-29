@@ -69,11 +69,9 @@ def move_book_to_cart(request, bookid):
                 item.save()
                 cart.save()
                 return redirect('index', bookid)
-                # return redirect('cart')
         cartitem = ShoppingCartItem.objects.all()
         cartitem.create(shoppingcart=cart, book=bk, quantity=1, ordered=False, savedforlater=False)
         return redirect('index', bookid)
-        # return redirect('cart')
 
 
     
