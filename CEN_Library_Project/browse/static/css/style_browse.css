@@ -26,7 +26,7 @@
 
 .headerCell
 {
-    background-color: #68836a;
+    background-color: #345458;
     border-color: #000000;
     color: #ffffff;
     line-height: 4em;
@@ -44,12 +44,12 @@
 
 .bookRow:nth-child(even)
 {
-    background-color: #e2e9e2;
+    background-color: #dfeaec;
 }
 
 .bookRow:nth-child(odd)
 {
-    background-color: #aabbab;
+    background-color: #8fb7bd;
 }
 
 .rate {
@@ -104,8 +104,8 @@
 
 .btn-dark
 {
-    background-color: #68836a !important;
-    border-color: #68836a !important;
+    background-color: #345458 !important;
+    border-color: #345458 !important;
 }
 
 .btn-dark-outline,
@@ -113,6 +113,6 @@
 .btn-dark:focus,
 .btn-dark:active
 {
-    background-color: #39473a !important;
-    border-color: #39473a !important;
+    background-color: #263d40 !important;
+    border-color: #263d40 !important;
 }

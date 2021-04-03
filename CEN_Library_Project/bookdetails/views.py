@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Book
 from .models import RatingReview
-from .forms import RatingForm
+from ratingReview.forms import RatingForm
 from django.views.generic import TemplateView
 
 # Create your views here.
