@@ -59,6 +59,7 @@ class RatingReview(models.Model):
     first_name = models.CharField(max_length=128, default="")
     last_name = models.CharField(max_length=128, default="")
     book_title = models.CharField(max_length=128, default="")
+    anonymous = models.BooleanField(default=False)
 
 
     def str(self):

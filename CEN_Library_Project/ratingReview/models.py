@@ -17,14 +17,9 @@ class BookRating(models.Model):
         ('4', 4),
         ('5', 5),
     )
-# <<<<<<< HEAD
 
     rating = models.CharField(choices=RATE, max_length=128, default = 1)
     review = models.CharField(max_length=128, default='Write Review')
-# =======
-#     rating = models.CharField(choices=RATE, max_length=128, default=1)
-#     name = models.CharField(max_length=128, default='Write Review')
-# >>>>>>> origin/bookDetails
     username = models.CharField(max_length=128, default="")
 
     def __str__(self):
