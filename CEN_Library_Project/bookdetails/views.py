@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .models import Book
+from .models import Author
 from .models import RatingReview
 from .forms import RatingForm
 from cart.models import ShoppingCart, ShoppingCartItem
@@ -46,9 +46,10 @@ def index(request, book_id):
     return render(request, "bookdetails/book_detail.html", context)
 
 
-def home(response):
-    return HttpResponse("<h1>hi</h1>")
-
+def similar(request, author):
+    writer = Author.objects.get(author=author)
+    books = Book.objects.filter(authors=writer)
+    return render(request, "bookdetails/similar_author.html", {'book': books, 'author': author})
 
 def move_book_to_cart(request, bookid):
     userid = request.user.id
