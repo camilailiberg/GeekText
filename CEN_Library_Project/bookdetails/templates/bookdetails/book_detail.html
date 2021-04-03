@@ -49,7 +49,7 @@
                         <h2 style="font-family:serif">{{ book.title }}</h2>
                         <p>by
                             {% for name in author %}
-                            <a href="" style="color: #68836a">{{ name }} </a> &nbsp
+                            <a href="/bookdetails/{{name}}" style="color: #68836a">{{ name }} </a> &nbsp
                             {% endfor %}
                         </p>
                         <hr>
@@ -72,20 +72,6 @@
 
             <!-- Importing js file for Modal image -->
             <script type="text/javascript" src="{% static 'javascript/image.js' %}"></script>
-        </div>
-        <div class="col">
-            <h2 style="font-family:serif">{{ book.title }}</h2>
-            <p>by
-                {% for name in author %}
-                <a href="" style="color: #68836a">{{ name }} </a> &nbsp
-                {% endfor %}
-            </p>
-            <hr>
-            <p>Rating: {{ average_rating }} </p>
-            <p>{{ book.genre }} </p>
-            <p>${{ book.price }} </p>
-            <p>Publisher: {{ book.publisher }} </p>
-            <p>Release Date: {{ book.release_date }} </p>
         </div>
     </div>
 </section>
@@ -144,11 +130,14 @@
     </div>
 </section>
 
+
+
+
 <section id="reviews" class="bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>Customer Reviews</h2>
+          <h2 style="text-align: center;">Customer Reviews</h2>
           <p class="lead">
               {% for q in rating %}
                 {% if q.username == user.get_username %}
@@ -218,57 +207,63 @@
                 <body class = "PastRatings">
                     {% for q in username %}
                     {% if q.book.title == book.title %}
+                    <div class="'col">
+                        <div class="fs-4 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                             class="bi bi-person-circle" viewBox="0 0 16 16" data-darkreader-inline-fill=""
+                             style="--darkreader-inline-fill: currentColor;">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                            <path fill-rule="evenodd"
+                                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
+                        </svg>
+                        &nbsp
                         {% if q.nickName == 0 %}
-                            <div class="lead"><b>{{q.first_name}} {{q.last_name}}</b></div>
+                            {{q.first_name}} {{q.last_name}}
                         {% endif %}
 
                         {% if q.nickName == 1 %}
-                            <div class="lead"><b>{{q.username}}</b></div>
+                            {{q.username}}
                         {% endif %}
-
+                        </div>
+                    </div>
                         {% if q.rating == "5" %}
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
+                             <div class="ratings">
+                                 <div class="empty-stars"></div>
+                                 <div class="full-stars" style="width:100%"></div>
+                             </div>
                         {% endif %}
 
                         {% if q.rating == "4" %}
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star"></p>
+                            <div class="ratings">
+                                 <div class="empty-stars"></div>
+                                 <div class="full-stars" style="width:80%"></div>
+                             </div>
                         {% endif %}
 
                         {% if q.rating == "3" %}
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star"></p>
-                            <p class = "fas fa-star"></p>
+                            <div class="ratings">
+                                 <div class="empty-stars"></div>
+                                 <div class="full-stars" style="width:60%"></div>
+                             </div>
                         {% endif %}
 
                         {% if q.rating == "2" %}
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star"></p>
-                            <p class = "fas fa-star"></p>
-                            <p class = "fas fa-star"></p>
+                            <div class="ratings">
+                                 <div class="empty-stars"></div>
+                                 <div class="full-stars" style="width:40%"></div>
+                             </div>
                         {% endif %}
 
                         {% if q.rating == "1" %}
-                            <p class = "fas fa-star" style = "color: #fd4"></p>
-                            <p class = "fas fa-star"></p>
-                            <p class = "fas fa-star"></p>
-                            <p class = "fas fa-star"></p>
-                            <p class = "fas fa-star"></p>
+                            <div class="ratings">
+                                 <div class="empty-stars"></div>
+                                 <div class="full-stars" style="width:20%"></div>
+                             </div>
                         {% endif %}
 
-
-                        <div class="lead">{{q.review}}</div>
                         <br>
+                        <div class="lead">{{q.review}}</div>
+                        <hr>
                     {% endif %}
                     {% endfor %}
                 </body>
@@ -281,36 +276,6 @@
 
 
           </p>
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2 style="text-align: center;">Customer Reviews</h2>
-                {% for rate in ratings %}
-                <div class="col">
-                    <div class="fs-4 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                             class="bi bi-person-circle" viewBox="0 0 16 16" data-darkreader-inline-fill=""
-                             style="--darkreader-inline-fill: currentColor;">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
-                            <path fill-rule="evenodd"
-                                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
-                        </svg>
-                        &nbsp {{rate.username}}
-                    </div>
-                </div>
-                <div class="col">
-                    <p>
-                    <div class="ratings">
-                        <div class="empty-stars"></div>
-                        <div class="full-stars" style="width:{{rate.percent}}%"></div>
-                    </div>
-                    {{rate.rating}} </p>
-
-                    <p>{{rate.name}}</p>
-                    <hr>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
     </div>
 </section>
 
@@ -385,12 +350,6 @@
     <title>Rating</title>
 </head>
 
-
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-    <p class="m-0 text-center text-white">Copyright &copy;GeekText All Rights Reserved</p>
-    <!-- /.container -->
-</footer>
 
 
 {% endblock content %}

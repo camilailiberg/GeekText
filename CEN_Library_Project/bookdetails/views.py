@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Book
+from .models import Author
 from .models import RatingReview
 from .forms import RatingForm
 from django.views.generic import TemplateView
@@ -44,9 +44,10 @@ def index(request, book_id):
     return render(request, "bookdetails/book_detail.html", context)
 
 
-def home(response):
-    return HttpResponse("<h1>hi</h1>")
-
+def similar(request, author):
+    writer = Author.objects.get(author=author)
+    books = Book.objects.filter(authors=writer)
+    return render(request, "bookdetails/similar_author.html", {'book': books, 'author': author})
 
     
 
