@@ -5,6 +5,7 @@ from .models import RatingReview
 from .forms import RatingForm
 from cart.models import ShoppingCart, ShoppingCartItem
 from cart.views import *
+from ratingReview.forms import RatingForm
 from django.views.generic import TemplateView
 
 # Create your views here.

@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import BookRating
+from bookdetails.models import RatingReview
 
 RATE = (
         (1, '1'),
@@ -18,13 +19,18 @@ RATE = (
 class RatingForm(forms.ModelForm):
 
     class Meta:
-        model = BookRating
+        model = RatingReview
         fields = [
             'rating',
             'username',
             'review',
+            'book',
+            'nickName',
+            'first_name',
+            'last_name',
+            'book_title'
         ]
-        widgets = {'rating' : forms.RadioSelect, 'review' : Textarea}
+        widgets = {'rating' : forms.RadioSelect, 'review' : Textarea, 'book' : Textarea}
 
 
 
