@@ -1,0 +1,21 @@
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title%}
+Transfer Book
+{% endblock%}
+
+{% block content %}
+<p>Are you sure you want to move "{{bk.title}}"?</p>
+<button onclick="window.location.href='http://127.0.0.1:8000/wishlist/{{wl.id}}';" type="button" class="btn btn-danger">Cancel</button>
+<br>
+<br>
+    {% for list in allWishLists %}
+        {% if list.user == user and list.id != wl.id%}
+            <form action="{% url 'transfer_book' wl.id list.id bk.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit", name="Confirm", class="btn btn-success", value="new">Move to {{list.name}} </button>
+            </form>
+            <br>
+        {% endif %}
+    {% endfor %}
+{% endblock%}
