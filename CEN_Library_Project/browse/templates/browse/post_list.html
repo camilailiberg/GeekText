@@ -29,19 +29,19 @@
             <!-- Star Rating Filter -->
             <div class="rate">
                 <span class="filter_rating" style="float:left;">Filter by Rating:  </span>
-                <input type="radio" id="star5" name="rate" value="5" {% if star_select== "5" %} checked="checked"
+                <input type="radio" id="star5" name="rate" value="5" {% if star_select == "5" %} checked="checked"
                 {%endif%} />
                 <label for="star5" title="5 stars">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" {% if star_select== "4" %} checked="checked"
+                <input type="radio" id="star4" name="rate" value="4" {% if star_select == "4" %} checked="checked"
                 {%endif%} />
                 <label for="star4" title="4 stars or up">4 stars or up</label>
-                <input type="radio" id="star3" name="rate" value="3" {% if star_select== "3" %} checked="checked"
+                <input type="radio" id="star3" name="rate" value="3" {% if star_select == "3" %} checked="checked"
                 {%endif%} />
                 <label for="star3" title="3 stars or up">3 stars or up</label>
-                <input type="radio" id="star2" name="rate" value="2" {% if star_select== "2" %} checked="checked"
+                <input type="radio" id="star2" name="rate" value="2" {% if star_select == "2" %} checked="checked"
                 {%endif%} />
                 <label for="star2" title="2 stars or up">2 stars or up</label>
-                <input type="radio" id="star1" name="rate" value="1" {% if star_select== "1" %} checked="checked"
+                <input type="radio" id="star1" name="rate" value="1" {% if star_select == "1" %} checked="checked"
                 {%endif%} />
                 <label for="star1" title="1 stars or up">1 star or up</label>
             </div>
@@ -63,21 +63,19 @@
         <div class="col-offset">
             <span class="sortOrderClass" style="padding: 10px; margin-left: 5px;">Sort Order: </span>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="ascend" name="sortOrder" value="ascend" {% if
-                       sortOrder== 'ascend' or sortOeder is None %} checked {% endif %} />
+                <input class="form-check-input" type="radio" id="ascend" name="sortOrder" value="ascend" {% if sortOrder == 'ascend' or sortOrder is None %} checked {% endif %} />
                 <label class="form-check-label" for="ascend">Ascending</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="descend" name="sortOrder" value="descend" {% if
-                       sortOrder== 'descend' %} checked {% endif %} />
+                <input class="form-check-input" type="radio" id="descend" name="sortOrder" value="descend" {% if sortOrder == 'descend' %} checked {% endif %} />
                 <label class="form-check-label" for="descend">Descending</label>
             </div>
         </div>
         <div class="col-offset">
             <select class="form-select form-select-sm" name="booksPerPage"/>
-            <option value="10" {% if page_select== 0 %} selected {% endif %}>Number of Books per Page</option>
-            <option value="10" {% if page_select== 10 %} selected {% endif %}>10 (Default)</option>
-            <option value="20" {% if page_select== 20 %} selected {% endif %}>20</option>
+            <option value="10" {% if page_select == 0 %} selected {% endif %}>Number of Books per Page</option>
+            <option value="10" {% if page_select == 10 %} selected {% endif %}>10 (Default)</option>
+            <option value="20" {% if page_select == 20 %} selected {% endif %}>20</option>
             </select>
         </div>
     </div>
@@ -86,13 +84,11 @@
         <div class="form-col">
             <span class="bestSellerClass" style="padding: 10px; margin-left: 10px;">Browse by: </span>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="defaultList" name="bestSeller" value="default" {% if
-                       bestSeller== 'default' or bestSeller is None %} checked {% endif %} />
+                <input class="form-check-input" type="radio" id="defaultList" name="bestSeller" value="default" {% if bestSeller == 'default' or bestSeller is None %} checked {% endif %} />
                 <label class="form-check-label" for="defaultList">Default</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="bestSellerList" name="bestSeller" value="best" {% if
-                       bestSeller== 'best' %} checked {% endif %}>
+                <input class="form-check-input" type="radio" id="bestSellerList" name="bestSeller" value="best" {% if bestSeller == 'best' %} checked {% endif %}>
                 <label class="form-check-label" for="bestSellerList">Best Sellers</label>
             </div>
         </div>
@@ -165,8 +161,6 @@
     {% for book in books_page %}
     <!-- Values of the books (Cover, Title, Author, Genre, Price, Rating) -->
     <div class="bookRow">
-        <!-- TODO: FIX ME -->
-        <!--<<<<<<< HEAD-->
         <div class="bookCell">
             <button onclick="window.location.href='http://127.0.0.1:8000/bookdetails/{{book.id}}';" type="button">
                 <img src="{{book.cover.url}}" style="width:200px;height:200px;">
@@ -178,14 +172,6 @@
                 {{book.title}}
             </button>
         </div>
-        <!--=======-->
-        <div class="bookCell"><a href="{% url 'bookdetails:index' book.id %}"><img src="{{book.cover.url}}"
-                                                                                   style="width:200px;height:200px;"></a>
-        </div>
-        <div class="bookCell_title"><a href="{% url 'bookdetails:index' book.id %}">{{book.title}}</a></div>
-        <!--&gt;>>>>>> Browse_Sort-->
-        <!-- TODO: FIX ME -->
-
         <div class="bookCell"> {% for book_author in book.authors.all %}
             <p>{{ book_author }}</p>
             {% endfor %}

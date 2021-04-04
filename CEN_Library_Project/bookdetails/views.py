@@ -8,9 +8,8 @@ from cart.views import *
 from ratingReview.forms import RatingForm
 from django.views.generic import TemplateView
 
+
 # Create your views here.
-
-
 def index(request, book_id):
     # Rating and Review Portion
     rating = RatingReview.objects.all()
@@ -51,6 +50,7 @@ def similar(request, author):
     writer = Author.objects.get(author=author)
     books = Book.objects.filter(authors=writer)
     return render(request, "bookdetails/similar_author.html", {'book': books, 'author': author})
+
 
 def move_book_to_cart(request, bookid):
     userid = request.user.id
