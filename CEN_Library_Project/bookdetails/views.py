@@ -14,7 +14,9 @@ def index(request, book_id):
     # Rating and Review Portion
     rating = RatingReview.objects.all()
     username = RatingReview.objects.all()
+    bookPurchase = ShoppingCartItem.objects.all()
     form = RatingForm(request.POST or None)
+
     if form.is_valid():
         form.save()
 
@@ -41,8 +43,10 @@ def index(request, book_id):
         'book': book, 'author': author,
         'ratings': ratings,
         'average_rating': average_rating,
-        'percent_rating': percent_rating
+        'percent_rating': percent_rating,
+        'bookPurchase': bookPurchase
     }
+
     return render(request, "bookdetails/book_detail.html", context)
 
 

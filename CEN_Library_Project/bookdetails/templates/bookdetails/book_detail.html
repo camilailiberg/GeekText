@@ -144,6 +144,32 @@
         <div class="col-lg-8 mx-auto">
           <h2 style="text-align: center;">Customer Reviews</h2>
           <p class="lead">
+              {% for b in bookPurchase %}
+                {% if b.shoppingcart_id != user.user_id %}
+                    <script>window.onload = function EndClick() {
+                            var x = document.getElementById("ReviewButton");
+                            x.style.display = "none";
+
+                        }
+                    </script>
+                {% endif %}
+              {% endfor %}
+
+              {% for p in bookPurchase %}
+                {% if p.shoppingcart_id == user.id %}
+                    {% if p.book_id == book.id %}
+                        {% if p.ordered == 1 %}
+                        <script>window.onload = function EndClick() {
+                            var x = document.getElementById("ReviewButton");
+                            x.style.display = "block";
+
+                        }
+                        </script>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+              {% endfor %}
+
               {% for q in rating %}
                 {% if q.username == user.get_username %}
                     {% if q.book_title == book.title %}
