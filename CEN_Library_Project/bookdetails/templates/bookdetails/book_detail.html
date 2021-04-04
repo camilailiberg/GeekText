@@ -1,7 +1,7 @@
 {% extends 'onlinelibrary/base.html' %}
 
 {% block title %}{{ book.title }}{% endblock title %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -188,6 +188,7 @@
 
             <form  method="POST" class = "rating" id = 'ratingForm'>
                 {% csrf_token %}
+<!--                {{form|crispy}}-->
 
                 <div id="ratingReview" style="display:none;">
                     <div class="stars">
