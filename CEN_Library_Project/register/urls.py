@@ -15,5 +15,10 @@ urlpatterns = [
 
 
     path("edit", views.edit, name="edit"),
+    path("payment_information/<int:errormessage>", views.payment_info, name="payment_info"),
+    path("add_credit_card_information", views.add_credit_card_info, name="add_credit_card_info"),
+    path("edit_credit_card_information/<int:creditcardid>/<int:error>", views.edit_credit_card_info, name="edit_credit_card_info"),
+    path("delete_credit_card_information/<int:creditcardid>", views.delete_credit_card_info,
+         name="delete_credit_card_info"),
+    path("change_password", views.change_password, name="change_password"),
 ]
-

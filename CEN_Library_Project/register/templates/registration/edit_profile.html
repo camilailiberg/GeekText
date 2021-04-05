@@ -5,6 +5,7 @@
 
 
 {% block content %}
+<<<<<<< HEAD
     <form method="POST" action="{% url 'edit_username' %}">
         {% csrf_token %}
         <label for="username"> Username: </label>
@@ -54,3 +55,93 @@
 
 
 {% endblock %}
+=======
+<style>
+    #table_summary {
+        width: 40%;
+    }
+    #table_summary th{
+        padding: 20px;
+    }
+</style>
+<br>
+{% if error == 1 %}
+    <div class="alert alert-danger" role="alert">
+        "Ups! The username you selected already exists."
+    </div>
+{% endif %}
+{% if emailError == 1 %}
+    <div class="alert alert-danger" role="alert">
+        "Ups! The email you selected already exists."
+    </div>
+{% endif %}
+<button onclick="window.location.href='http://127.0.0.1:8000/register/account';" type="button" class="btn btn-primary">
+    Back to Account Summary
+</button>
+<br>
+<br>
+<br>
+<table id="table_summary" class="table">
+    <tr>
+        <th>Username:</th>
+        <td>
+            <form method="POST" action="{% url 'edit_username' %}">
+                {% csrf_token %}
+                <input id="username", type = "text", name="username", placeholder="{{user.username}}">
+                <button type="submit", class="btn btn-success">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>
+            <form method="POST" action="{% url 'edit_email' %}">
+                {% csrf_token %}
+                <input id="email", type = "text", name="email", placeholder="{{user.email}}">
+                <button type="submit", name = "emailbutton",  class="btn btn-success">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>First Name:</th>
+        <td>
+            <form method="POST" action="{% url 'edit_first_name' %}">
+                {% csrf_token %}
+                <input id="firstname", type = "text", name="firstname", placeholder="{{user.first_name}}">
+                <button type="submit", name = "firstnamebutton",  class="btn btn-success">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>Last Name:</th>
+        <td>
+            <form method="POST" action="{% url 'edit_last_name' %}">
+                {% csrf_token %}
+                <input id="lastname", type = "text", name="lastname", placeholder="{{user.last_name}}">
+                <button type="submit", name = "lastnamebutton",  class="btn btn-success">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>Primary Address:</th>
+        <td>
+            <form method="POST" action="{% url 'edit_home_address' %}">
+                {% csrf_token %}
+                <input id="homeaddress", type = "text", name="homeaddress", placeholder="{{profile.homeAddress}}">
+                <button type="submit", name = "homeaddressbutton",  class="btn btn-success">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>Secondary Address:</th>
+        <td>
+            <form method="POST" action="{% url 'edit_address' %}">
+                {% csrf_token %}
+                <input id="address", type = "text", name="address", placeholder="{{profile.address}}">
+                <button type="submit", name = "addressbutton",  class="btn btn-success">Update</button>
+            </form>
+        </td>
+    </tr>
+</table>
+{% endblock %}
+>>>>>>> origin/master

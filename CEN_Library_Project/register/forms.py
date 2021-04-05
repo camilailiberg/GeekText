@@ -7,6 +7,8 @@ from django.core.exceptions import ValidationError
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
 
     def clean_email(self):
         # Get the email

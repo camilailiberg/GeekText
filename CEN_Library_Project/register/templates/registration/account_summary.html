@@ -5,6 +5,7 @@
 
 
 {% block content %}
+<<<<<<< HEAD
     <h2>Account Summary</h2>
     <br>
     <br>
@@ -24,3 +25,51 @@
     </p>
 <button onclick="window.location.href='http://127.0.0.1:8000/register/edit';" type="button" class="btn btn-danger">Edit</button>
 {% endblock %}
+=======
+<h2>Account Summary</h2>
+<br>
+<style>
+    #table_summary {
+        width: 30%;
+    }
+    #table_summary th{
+        padding: 20px;
+    }
+</style>
+
+<table id="table_summary" class="table">
+    <tr>
+        <th>Username:</th>
+        <td>{{user.username}}</td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td>{{user.email}}</td>
+    </tr>
+    <tr>
+        <th>First Name:</th>
+        <td>{{user.first_name}}</td>
+    </tr>
+    <tr>
+        <th>Last Name:</th>
+        <td>{{user.last_name}}</td>
+    </tr>
+    <tr>
+        <th>Primary Address:</th>
+        <td>{{profile.homeAddress}}</td>
+    </tr>
+    <tr>
+        <th>Secondary Address:</th>
+        <td>{{profile.address}}</td>
+    </tr>
+</table>
+<button onclick="window.location.href='http://127.0.0.1:8000/register/edit';" type="button" class="btn btn-danger">
+    Edit
+</button>
+<br>
+<br>
+<button onclick="window.location.href='http://127.0.0.1:8000/register/change_password';" type="button" class="btn btn-primary">
+    Change Password
+</button>
+{% endblock %}
+>>>>>>> origin/master

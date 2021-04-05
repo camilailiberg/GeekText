@@ -1,0 +1,97 @@
+{%  extends 'onlinelibrary/base.html' %}
+
+{% block title %}
+    Edit Credit Card Information
+{% endblock %}
+
+{% block content %}
+<br>
+<button onclick="window.location.href='http://127.0.0.1:8000/register/payment_information/0';" type="button" class="btn btn-primary">
+    Back to Credit Card Information
+</button>
+<br>
+<br>
+{% if error == 1 %}
+<div class="alert alert-danger" role="alert">
+    "Ups! Your credit card either is expired or expires today."
+</div>
+{% elif error == 2 %}
+<div class="alert alert-danger" role="alert">
+    "Ups! Your enter an invalid expiration format. Please enter the expiration date in the format YYYY-MM-DD."
+</div>
+{% endif %}
+<h3>Edit Credit Card</h3>
+<table id="table_summary" class="table">
+    <form method="POST" action="{% url 'edit_credit_card_info' creditcard.id error %}">
+        {% csrf_token %}
+        <tr>
+            <th>
+                <label for="firstname">First Name:</label>
+            </th>
+            <td>
+                <input id="firstname", type="text", name="firstname", value="{{creditcard.firstname}}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="lastname">Last Name:</label>
+            </th>
+            <td>
+                <input id="lastname", type="text", name="lastname", value="{{creditcard.lastname}}" required>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="cardnumber">Card Number:</label>
+            </th>
+            <td>
+                <input id="cardnumber", type="number", name="cardnumber", value="{{creditcard.cardnumber}}",  min="1000000000000" max="9999999999999999999" required>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="expirationdate">Expiration Date:</label>
+            </th>
+            <td>
+                <input id="expirationdate", type="date", name="expirationdate", placeholder="YYYY-MM-DD", required>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="securitynumber">Security Number:</label>
+            </th>
+            <td>
+                <input id="securitynumber", type="number", name="securitynumber", placeholder="XXX", min="100" max="999" required>
+            </td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td>
+                    <button type="submit", class="btn btn-success">Update</button>
+                </td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </form>
+</table>
+<script>
+document.getElementById("cardnumber").addEventListener("invalid", myFunction) ;
+
+function myFunction()
+{
+  alert("Your credit card number must have a minimum of 13 digits and a maximum of 19.") ;
+}
+document.getElementById("securitynumber").addEventListener("invalid", invalidPIN) ;
+
+function invalidPIN()
+{
+  alert("Invalid Security Number. It must have 3 digits.") ;
+}
+// document.getElementById("expirationdate").addEventListener("invalid", invalidDate) ;
+//
+// function invalidDate()
+// {
+//   alert("Invalid Date. Please enter date in the following format: YYYY-MM-DD") ;
+// }
+</script>
+{% endblock %}

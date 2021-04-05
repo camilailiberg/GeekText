@@ -25,7 +25,7 @@ def delete_cart_item(request, cartitemid):
         cart.save()
         return redirect('/ShoppingCart/')
 
-    return render(request, "cart/deletecartitem.html", {"cartitem":cartitem})
+    return render(request, "cart/deletecartitem.html", {"cartitem": cartitem})
 
 
 def save_for_later(request, cartitemid):

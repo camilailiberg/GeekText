@@ -9,28 +9,28 @@
 
 {% block notloggin %}
 
-<div class="alert alert-danger" role="alert">
-  Login by clicking sing in on the top right corner.
-</div>
+<!--<div class="alert alert-danger" role="alert">-->
+<!--  Login by clicking sing in on the top right corner.-->
+<!--</div>-->
 
-<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Sign in or Create an Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+<!--<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content rounded-0">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLabel">Sign in or Create an Account</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
                 <form method="post" class="form-group">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <button type="submit" class="btn btn-success btn-block rounded-0">Login</button>
                 </form>
-            </div>
-            <div class="modal-footer" style="text-align: center;">
+<!--            </div>-->
+<!--            <div class="modal-footer" style="text-align: center;">-->
                 <p>Don't have and account? <a href="/register" class="text-decoration-none" style="color: #68836a">Create one here</a></p>
-            </div>
-        </div>
-    </div>
-</div>
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 {% endblock %}

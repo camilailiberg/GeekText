@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.db.models import Avg
 
 
 class Author(models.Model):
@@ -38,8 +39,12 @@ class Book(models.Model):
     release_date = models.DateField(default='Unknown')
     bestseller = models.BooleanField(default=False)
 
-    def str(self):
+    def __str__(self):
         return self.title
+
+    @property
+    def average_rating(self):
+        return self.ratings.all().aggregate(Avg('rating')).get('rating__avg') or 0.0
 
 
 # Rating and Review Portion
@@ -59,7 +64,7 @@ class RatingReview(models.Model):
     first_name = models.CharField(max_length=128, default="")
     last_name = models.CharField(max_length=128, default="")
     book_title = models.CharField(max_length=128, default="")
-
+    anonymous = models.BooleanField(default=False)
 
     def str(self):
         return self.rating

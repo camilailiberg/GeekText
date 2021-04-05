@@ -1,0 +1,14 @@
+{% extends 'onlinelibrary/base.html' %}
+
+{% block title %}Delete Credit Card{% endblock %}
+
+{% block content %}
+<p>Are you sure you want to delete "{{creditcard.cardnumber}}"?</p>
+<button onclick="window.location.href='http://127.0.0.1:8000/register/payment_information/0';" type="button" class="btn btn-danger">Cancel</button>
+<br>
+<br>
+<form action="{% url 'delete_credit_card_info' creditcard.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit", name="Confirm", class="btn btn-success", value="new">Submit</button>
+</form>
+{% endblock %}

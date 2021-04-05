@@ -34,7 +34,7 @@ urlpatterns = [
     # use to render our login form.
 
 
-    #Register URL
+    #  Register URL
     path('register/', include("register.urls")),
     path('', include("django.contrib.auth.urls")),
 

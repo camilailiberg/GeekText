@@ -5,9 +5,19 @@ Wish List
 {% endblock%}
 
 {% block content%}
+{% if counter > 0 %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endif %}
+{% if counter2 > 0 %}
+<div class="alert alert-danger" role="alert">
+    {{message2}}
+</div>
+{% endif %}
 <h1>Wish Lists:</h1>
 
-<form  action="#" method="post">
+<form  action="http://127.0.0.1:8000/wishlist/" method="post">
 {% csrf_token %}
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -20,8 +30,7 @@ Wish List
         </div>
         <input name="new" type="text">
     </div>
-    <br>
-
+</form>
 <table class="table">
     <thead>
             <th>Name</th>
@@ -29,18 +38,40 @@ Wish List
             <th></th>
             <th></th>
     </thead>
-        {% for wl in wl %}
-    <tr>
-            <td><a href="http://127.0.0.1:8000/wishlist/{{wl.id}}">{{wl.name}}</a></td>
-            <td><input name="primary"type="radio" value="{{wl.primary}}"></input</td>
-            <td><button class="btn btn-danger" onclick="window.location.href='delete/{{wl.id}}';" type="button">
-            <svg class="bi bi-trash" fill="currentColor" height="20" viewBox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" fill-rule="evenodd"/>
-            </svg></button></td></tr>
+        {% for list in wl %}
+        <tr>
+            <td>
+                <button onclick="window.location.href='http://127.0.0.1:8000/wishlist/{{list.id}}';" type="button" class="btn btn-primary">
+                    {{list.name}}
+                </button>
+                {% if list.primary == True %}
+                    <button type="button" class="btn btn-danger">Primary</button>
+                {% endif %}
+            </td>
+            <td>
+                {% if list.primary == False %}
+                <form action="{% url 'set_primary' list.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit", name="Confirm", class="btn btn-success", value="new">Set as Primary</button>
+                </form>
+                {% endif %}
+                {% if list.primary == True %}
+                <form action="{% url 'remove_primary' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit", name="Confirm", class="btn btn-danger", value="new">Remove Primary</button>
+                </form>
+                {% endif %}
+            </td>
+            <td>
+                <button class="btn btn-danger" onclick="window.location.href='http://127.0.0.1:8000/wishlist/delete/{{list.id}}';" type="button">
+                    <svg class="bi bi-trash" fill="currentColor" height="20" viewBox="0 0 16 16" width="20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" fill-rule="evenodd"/>
+                    </svg>
+                </button>
+            </td>
+        </tr>
         {% endfor %}
 </table>
-
-</form>
 
 {% endblock%}

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from bookdetails.models import Book
 
+
 # Create your models here.
 class ShoppingCart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="shoppingcart", null=True)
@@ -13,11 +14,11 @@ class ShoppingCart(models.Model):
         return str(self.user.username) + "'s cart"
 
     def subtotal(self):
-        amount = 0.0
+        amount = 0.00
         for cartitem in self.shoppingcartitem_set.all():
             if not cartitem.savedforlater and not cartitem.ordered:
                 amount = amount + float(cartitem.quantity * cartitem.book.price)
-        return round(amount, 2)
+        return "%.2f" % amount
 
     def __repr__(self):
         return '<ShoppingCart object ({}) "{}">'.format(self.id, self.user.username)

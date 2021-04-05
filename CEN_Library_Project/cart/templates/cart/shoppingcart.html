@@ -31,7 +31,9 @@
             {% if item.savedforlater == False and item.ordered == False and item.quantity > 0 %}
                 <tr>
                     <td>
-                        {{ item }}
+                         <button onclick="window.location.href='http://127.0.0.1:8000/bookdetails/{{item.book.id}}';" type="button" class="btn btn btn-secondary">
+                            {{ item }}
+                         </button>
                     </td>
                     <td>
                         <form action="{% url 'updateqty' item.id%}" method="POST">
@@ -117,7 +119,9 @@
             {% if item.savedforlater == True and item.ordered == False and item.quantity > 0 %}
                 <tr>
                     <td>
-                        {{ item }}
+                        <button onclick="window.location.href='http://127.0.0.1:8000/bookdetails/{{item.book.id}}';" type="button" class="btn btn btn-secondary">
+                            {{ item }}
+                         </button>
                     </td>
                     <td>
                         <form action="{% url 'updateqty' item.id%}" method="POST">
