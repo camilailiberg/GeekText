@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.views import generic
 from .models import Profile
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 
 
@@ -86,33 +87,25 @@ def edit_address(request):
         profile.save()
     return redirect('/register/account')
 
-##New Code here!!##
-# def edit_credit_card(request):
-#     userid = request.user.id
-#     profile = Profile.objects.get(id=userid)
-#     user = request.user
-#     if request.method == "POST":
-#         profile.creditCard = request.POST['creditcard']
-#         profile.save()
-#     return redirect('/register/account')
 
-# def edit_credit_card2(request):
-#     userid = request.user.id
-#     profile = Profile.objects.get(id=userid)
-#     user = request.user
-#     if request.method == "POST":
-#         profile.creditCard2 = request.POST['creditcard2']
-#         profile.save()
-#     return redirect('/register/account')
 
-# def edit_credit_card3(request):
-#     userid = request.user.id
-#     profile = Profile.objects.get(id=userid)
-#     user = request.user
-#     if request.method == "POST":
-#         profile.creditCard3 = request.POST['creditcard3']
-#         profile.save()
-#     return redirect('/register/account')
+#####HERE!!!!####
+def change_password(request):
+    if request.method=='POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('/register/account')
+        else:
+            return redirect('/register/change-password')
+    else:
+        form = PasswordChangeForm(user=request.user)
+        args = {'form': form}
+        return render(request, 'registration/change_password.html', args)
+
+
 
 def account(request):
     userid = request.user.id

@@ -12,10 +12,7 @@ class Profile(models.Model):
     address = models.CharField(max_length=200)
     homeAddress = models.CharField(max_length=200)
     # Changes I made
-    # creditCard = models.CharField(max_length=19) #New code TODO: MAx and min length ******
-    # creditCard2 = models.CharField(max_length=19)#^^^^^^^^
-    # creditCard3 = models.CharField(max_length=19)#^^^^^^^^
-    # creditCard = models.IntegerField() # TODO: Max and min length
+
     wishlistCounter = models.IntegerField(default=0)
     # booksbought = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="booksbought", null=True) # TODO: I changed this, talk to Pedro
 
@@ -36,4 +33,16 @@ class Profile(models.Model):
             print('Profile and Shopping Cart Created!')
 
     post_save.connect(createprofile, sender=User)
+
+
+class CreditCard(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    cardnumber = models.IntegerField(default=0)
+    expiration = models.DateField()
+    security = models.IntegerField(default=0)
+    firstname = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.cardnumber
 
