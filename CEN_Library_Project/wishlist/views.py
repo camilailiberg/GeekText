@@ -34,13 +34,13 @@ def wishlist(response):  # good to go
                     wl.create(name=txt, primary=False, user=response.user)
                     return redirect('/wishlist/')
                 else:
-                    message = "Ups! You cannot have more than 3 wish lists."
+                    message = "Oops! You cannot have more than 3 wish lists."
                     for i in message:
                         counter += 1
                     return render(response, "wishlist/wishlisthome.html", {"wl": wl, "counter": counter, "message": message})
                     raise Exception("Maximum number of List")
             else:
-                message2 = "Ups! The name for your list is too short, it must contain at least 3 letters."
+                message2 = "Oops! The name for your list is too short, it must contain at least 3 letters."
                 for i in message2:
                     counter2 += 1
                 return render(response, "wishlist/wishlisthome.html",
