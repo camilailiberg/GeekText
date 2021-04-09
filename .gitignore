@@ -4,19 +4,4 @@ env/
 venv/
 
 # Apps
-CEN_Library_Project/wishlist
-CEN_Library_Project/register
-CEN_Library_Project/onlinelibrary
-CEN_Library_Project/wishlistmedia
-CEN_Library_Project/cart
-CEN_Library_Project/browse
-CEN_Library_Project/bookdetails
-*.pyc
-*.pyc
-*.pyc
-*.pyc
-*.pyc
-*.pyc
-*.pyc
-*.pyc
 *.pyc
