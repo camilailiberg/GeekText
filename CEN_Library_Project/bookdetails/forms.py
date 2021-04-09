@@ -26,9 +26,17 @@ class RatingForm(forms.ModelForm):
             'review',
             'book',
             'nickName',
-            'anonymous',
+            'anony',
             'first_name',
             'last_name',
             'book_title'
         ]
         widgets = {'rating': forms.RadioSelect, 'review': Textarea, 'book': Textarea}
+
+
+class RatingFormAnon(forms.ModelForm):
+    class Meta:
+        model = RatingReview
+        fields = [
+            'anonymous'
+        ]
