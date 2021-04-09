@@ -4,7 +4,7 @@ from .models import Author
 from .models import RatingReview
 from .forms import RatingForm
 from cart.models import ShoppingCart, ShoppingCartItem
-from cart.views import *
+# from cart.views import *
 from ratingReview.forms import RatingForm
 from django.views.generic import TemplateView
 
@@ -17,8 +17,15 @@ def index(request, book_id):
     bookPurchase = ShoppingCartItem.objects.all()
     form = RatingForm(request.POST or None)
 
-    if form.is_valid():
-        form.save()
+    # TODO: Camila trying to fix code start
+    idbook = book_id
+    if request.method == "POST":
+    # TODO: Camila trying to fix code end
+        if form.is_valid():
+            form.save()
+        # TODO: Camila trying to fix code start
+            return render(request, "bookdetails/anonymous.html", {'idbook': idbook})
+        # TODO: Camila trying to fix code end
 
     # Book Details Portion
     book = Book.objects.get(id=book_id)
@@ -80,7 +87,15 @@ def move_book_to_cart(request, bookid):
         return redirect('index', bookid)
 
 
-    
+def make_anonymous(request, idbook):
+    rating = RatingReview.objects
+    userName = request.user.username
+    firstName = request.user.first_name
 
+    if request.method == "POST":
+        rating.get(book=idbook, username=userName).anonymous = True
+        rating.get(book=idbook, username=userName).save()
+
+    return redirect('index', idbook)
 
 

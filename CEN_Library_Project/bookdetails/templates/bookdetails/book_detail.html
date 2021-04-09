@@ -2,7 +2,6 @@
 
 {% block title %}{{ book.title }}{% endblock title %}
 
-
 {% block content %}
 
 {% load static %}
@@ -161,7 +160,7 @@
                         {% if p.ordered == 1 %}
                         <script>window.onload = function EndClick() {
                             var x = document.getElementById("ReviewButton");
-                            x.style.display = "block";
+                            x.style.display = "block"; <!-- TODO: should this be in an else? -->
 
                         }
                         </script>
@@ -226,9 +225,8 @@
                     <p class="lead" style="display: inline-block">Nickname</p>
                     <input type="checkbox" name="nickName" id="id_nickName">
                     <br>
-                    <input type="checkbox" name="anonymous" id="id_anonymous">
                     <p class="lead" style="display: inline-block">Anonymous</p>
-
+                    <input type="checkbox" name="anonymous" id="id_anonymous">
 
                     <label for="id_book"></label><input name="book" cols="10" rows="1" required="" id="id_book"value = {{book.id}} hidden>
                     <label for="id_book"></label><input name="book_title" cols="20" rows="1" required="" id="id_book_title"value = "{{ book.title }}" hidden>
@@ -238,6 +236,11 @@
                     <input type="submit" class = "SubmitButton" value="submit" onclick="OnClick()">
                 </div>
             </form>
+
+            <!-- TODO: Camila Trying to fix anonymous -->
+
+            <!-- TODO: Camila Trying to fix anonymous -->
+
                 <body class = "PastRatings">
                     {% for q in username %}
                     {% if q.book.title == book.title %}

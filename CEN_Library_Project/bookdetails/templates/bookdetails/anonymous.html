@@ -1,0 +1,14 @@
+{% extends "onlinelibrary/base.html" %}
+
+{% block title %}Anonymous Review{% endblock %}
+
+{% block content %}
+<p>Do you want to make your Review anonymous?</p>
+<button onclick="window.location.href='http://127.0.0.1:8000/bookdetails/{{idbook}}';" type="button" class="btn btn-danger">No</button>
+<br>
+<br>
+<form action="{% url 'makeanonymous' idbook %}" method="POST">
+    {% csrf_token %}
+    <button type="submit", name="Confirm", class="btn btn-success", value="new">Yes</button>
+</form>
+{% endblock %}
