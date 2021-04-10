@@ -1,6 +1,8 @@
 {% extends 'onlinelibrary/base.html' %}
 
 {% block title %}{{ book.title }}{% endblock title %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 
@@ -226,7 +228,8 @@
                     <input type="checkbox" name="nickName" id="id_nickName">
                     <br>
                     <p class="lead" style="display: inline-block">Anonymous</p>
-                    <input type="checkbox" name="anonymous" id="id_anonymous">
+
+                    <input type="checkbox" name="anony" id="id_anony">
 
                     <label for="id_book"></label><input name="book" cols="10" rows="1" required="" id="id_book"value = {{book.id}} hidden>
                     <label for="id_book"></label><input name="book_title" cols="20" rows="1" required="" id="id_book_title"value = "{{ book.title }}" hidden>
@@ -236,10 +239,6 @@
                     <input type="submit" class = "SubmitButton" value="submit" onclick="OnClick()">
                 </div>
             </form>
-
-            <!-- TODO: Camila Trying to fix anonymous -->
-
-            <!-- TODO: Camila Trying to fix anonymous -->
 
                 <body class = "PastRatings">
                     {% for q in username %}
@@ -255,7 +254,7 @@
                         </svg>
                         &nbsp
                         {% if q.nickName == 0 %}
-                            {% if q.anonymous == 0 %}
+                            {% if q.anony == 0 %}
                                 <div class="lead"><b>{{q.first_name}} {{q.last_name}}</b></div>
                             {% endif %}
                         {% endif %}
@@ -263,7 +262,7 @@
                         {% if q.nickName == 1 %}
                             {{q.username}}
                         {% endif %}
-                        {% if q.anonymous == 1 %}
+                        {% if q.anony == 1 %}
                             <div class="lead"><b>Anonymous</b></div>
                         {% endif %}
                         </div>

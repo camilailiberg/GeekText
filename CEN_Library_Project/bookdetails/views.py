@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
+from django import forms
 from .models import Book
 from .models import Author
 from .models import RatingReview
 from .forms import RatingForm
+from .forms import RatingFormAnon
 from cart.models import ShoppingCart, ShoppingCartItem
 # from cart.views import *
 from ratingReview.forms import RatingForm
+from cart.views import *
+
 from django.views.generic import TemplateView
 
 
@@ -15,17 +19,11 @@ def index(request, book_id):
     rating = RatingReview.objects.all()
     username = RatingReview.objects.all()
     bookPurchase = ShoppingCartItem.objects.all()
-    form = RatingForm(request.POST or None)
+    form1 = RatingForm(request.POST or None)
+    form2 = RatingFormAnon(request.POST or None)
 
-    # TODO: Camila trying to fix code start
-    idbook = book_id
-    if request.method == "POST":
-    # TODO: Camila trying to fix code end
-        if form.is_valid():
-            form.save()
-        # TODO: Camila trying to fix code start
-            return render(request, "bookdetails/anonymous.html", {'idbook': idbook})
-        # TODO: Camila trying to fix code end
+    if form1.is_valid():
+        form1.save()
 
     # Book Details Portion
     book = Book.objects.get(id=book_id)
@@ -44,7 +42,8 @@ def index(request, book_id):
         percent_rating = (average_rating / 5) * 100
 
     context = {
-        'form': form,
+        'form1': form1,
+        'form2': form2,
         'rating': rating,
         'username': username,
         'book': book, 'author': author,
@@ -85,17 +84,5 @@ def move_book_to_cart(request, bookid):
         cartitem = ShoppingCartItem.objects.all()
         cartitem.create(shoppingcart=cart, book=bk, quantity=1, ordered=False, savedforlater=False)
         return redirect('index', bookid)
-
-
-def make_anonymous(request, idbook):
-    rating = RatingReview.objects
-    userName = request.user.username
-    firstName = request.user.first_name
-
-    if request.method == "POST":
-        rating.get(book=idbook, username=userName).anonymous = True
-        rating.get(book=idbook, username=userName).save()
-
-    return redirect('index', idbook)
 
 
