@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from decimal import Decimal
 
 
 class Author(models.Model):
@@ -44,7 +45,10 @@ class Book(models.Model):
 
     @property
     def average_rating(self):
-        return self.ratings.all().aggregate(Avg('rating')).get('rating__avg') or 0.0
+        average = self.ratings.all().aggregate(Avg('rating')).get('rating__avg') or 0.0
+        if average is not None:
+            Decimal(average)
+        return round(average, 1)
 
 
 # Rating and Review Portion
