@@ -9,7 +9,6 @@ from django.urls import path
 urlpatterns = [
     path('<int:book_id>/', views.index, name='index'),
     path('<str:author>/', views.similar, name='similar'),
-    path('makeanonymous/<int:idbook>"', views.make_anonymous, name='makeanonymous'),
     path("movebooktocart/<int:bookid>", views.move_book_to_cart, name="move_book_to_cart"),
 ]
 
