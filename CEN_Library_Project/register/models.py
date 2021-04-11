@@ -11,11 +11,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile", null=True)
     address = models.CharField(max_length=200)
     homeAddress = models.CharField(max_length=200)
-<<<<<<< HEAD
     # Changes I made
 
-=======
->>>>>>> origin/master
+
     wishlistCounter = models.IntegerField(default=0)
     # booksbought = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="booksbought", null=True) # TODO: I changed this, talk to Pedro
 
@@ -46,9 +44,9 @@ class CreditCard(models.Model):
     lastname = models.CharField(max_length=30)
 
     def __str__(self):
-<<<<<<< HEAD
+
         return self.cardnumber
-=======
+
         return str(self.cardnumber)
->>>>>>> origin/master
+
 

@@ -4,14 +4,14 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.views import generic
-<<<<<<< HEAD
+
 from .models import Profile
 from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-=======
+
 from .models import Profile, CreditCard
 from django.contrib.auth import update_session_auth_hash
->>>>>>> origin/master
+
 from django.contrib import messages
 from django.utils.dateparse import parse_datetime
 from django.contrib.auth.models import User
