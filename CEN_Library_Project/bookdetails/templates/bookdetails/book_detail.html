@@ -1,7 +1,7 @@
 {% extends 'onlinelibrary/base.html' %}
 
 {% block title %}{{ book.title }}{% endblock title %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -188,6 +188,7 @@
 
             <form  method="POST" class = "rating" id = 'ratingForm'>
                 {% csrf_token %}
+<!--                {{form|crispy}}-->
 
                 <div id="ratingReview" style="display:none;">
                     <div class="stars">
@@ -226,8 +227,8 @@
                     <p class="lead" style="display: inline-block">Nickname</p>
                     <input type="checkbox" name="nickName" id="id_nickName">
                     <br>
-                    <input type="checkbox" name="anonymous" id="id_anonymous">
                     <p class="lead" style="display: inline-block">Anonymous</p>
+                    <input type="checkbox" name="anony" id="id_anony">
 
 
                     <label for="id_book"></label><input name="book" cols="10" rows="1" required="" id="id_book"value = {{book.id}} hidden>
@@ -252,7 +253,7 @@
                         </svg>
                         &nbsp
                         {% if q.nickName == 0 %}
-                            {% if q.anonymous == 0 %}
+                            {% if q.anony == 0 %}
                                 <div class="lead"><b>{{q.first_name}} {{q.last_name}}</b></div>
                             {% endif %}
                         {% endif %}
@@ -260,7 +261,7 @@
                         {% if q.nickName == 1 %}
                             {{q.username}}
                         {% endif %}
-                        {% if q.anonymous == 1 %}
+                        {% if q.anony == 1 %}
                             <div class="lead"><b>Anonymous</b></div>
                         {% endif %}
                         </div>

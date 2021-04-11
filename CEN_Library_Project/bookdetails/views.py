@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
+from django import forms
 from .models import Book
 from .models import Author
 from .models import RatingReview
 from .forms import RatingForm
+from .forms import RatingFormAnon
 from cart.models import ShoppingCart, ShoppingCartItem
 from cart.views import *
-from ratingReview.forms import RatingForm
 from django.views.generic import TemplateView
 
 
@@ -15,10 +16,11 @@ def index(request, book_id):
     rating = RatingReview.objects.all()
     username = RatingReview.objects.all()
     bookPurchase = ShoppingCartItem.objects.all()
-    form = RatingForm(request.POST or None)
+    form1 = RatingForm(request.POST or None)
+    form2 = RatingFormAnon(request.POST or None)
 
-    if form.is_valid():
-        form.save()
+    if form1.is_valid():
+        form1.save()
 
     # Book Details Portion
     book = Book.objects.get(id=book_id)
@@ -37,7 +39,8 @@ def index(request, book_id):
         percent_rating = (average_rating / 5) * 100
 
     context = {
-        'form': form,
+        'form1': form1,
+        'form2': form2,
         'rating': rating,
         'username': username,
         'book': book, 'author': author,
