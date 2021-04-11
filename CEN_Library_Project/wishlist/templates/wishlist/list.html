@@ -47,7 +47,7 @@
                     {% endfor %}
                 </td>
                 <td>{{book.genre}}</a></td>
-                <td>{{book.rating}}</a></td>
+                <td>{{book.average_rating}}</a></td>
                 <td>{{book.price}}</a></td>
                 <td>
                     <form action="{% url 'move_to_cart' book.id%}" method="POST">
