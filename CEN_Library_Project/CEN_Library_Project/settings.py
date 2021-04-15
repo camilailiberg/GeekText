@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'browse.apps.BrowseConfig',
     'rest_framework',
     'ratingReview.apps.ratingReviewConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
